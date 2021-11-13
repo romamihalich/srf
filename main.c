@@ -6,13 +6,13 @@ int N;
 
 struct Node {
     void* value;
-    struct Node *next;
-    struct Node *prev;
+    struct Node* next;
+    struct Node* prev;
 };
 
 typedef struct {
-    struct Node *head;
-    struct Node *tail;
+    struct Node* head;
+    struct Node* tail;
     int count;
 } List;
 
@@ -20,8 +20,8 @@ bool is_empty(List list) {
     return list.head == NULL;
 }
 
-void push(List *list, void* item) {
-    struct Node *elem = (struct Node *)malloc(sizeof(struct Node));
+void push(List* list, void* item) {
+    struct Node* elem = (struct Node*)malloc(sizeof(struct Node));
     if (elem == NULL) {
         printf("OS didn't give memory for elem\n");
         exit(1);
@@ -66,7 +66,7 @@ void delete(List* list, struct Node* elem) {
     free(elem);
 }
 
-typedef struct Semiring {
+typedef struct {
     int* mult;
     int* add;
 } Semiring;
@@ -101,21 +101,19 @@ bool isidempotent(int table[N*N]) {
     return true;
 }
 
-bool isdistributive(int mult[N][N], int add[N][N]) {
-    for (int i = 0; i < N; i++)
-    {
+bool isdistributive(int mult[N*N], int add[N*N]) {
+    for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             for (int k = 0; k < N; k++) {
-                if (mult[i][add[j][k]] != add[mult[i][j]][mult[i][k]])
+                if (mult[i*N + add[j*N + k]] != add[mult[i*N + j]*N + mult[i*N + k]])
                     return false;
             }
         }
     }
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             for (int k = 0; k < N; k++) {
-                if (mult[add[i][j]][k] != add[mult[i][k]][mult[j][k]])
+                if (mult[add[i*N + j]*N + k] != add[mult[i*N + k]*N + mult[j*N + k]])
                     return false;
             }
         }
@@ -132,13 +130,6 @@ bool isisomorphism(int f[N], Semiring r1, Semiring r2) {
         }
     }
     return true;
-}
-
-void print_array(int arr[N]) {
-    for (int i = 0; i < N; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
 }
 
 void find_isomorphism(int arr[N], int pos, Semiring r1, Semiring r2, bool* result) {
@@ -169,15 +160,6 @@ bool areisomorphic(Semiring r1, Semiring r2) {
     return result;
 }
 
-void print_matrix(int matrix[N*N]) {
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            printf("%d ", matrix[i*N + j]);
-        }
-        printf("\n");
-    }
-}
-
 //  0 0  0 0  0 0  0 0  0 1  0 1  0 1  0 1  1 0  1 0  1 0  1 0  1 1  1 1  1 1  1 1 
 //  0 0  0 1  1 0  1 1  0 0  0 1  1 0  1 1  0 0  0 1  1 0  1 1  0 0  0 1  1 0  1 1
 
@@ -185,7 +167,7 @@ void generate_tables_rec(int matrix[N*N], int pos, List* mult_tables, List* add_
     if (pos == N*N) {
         if (isassociative(matrix)) {
             if (isidempotent(matrix)) {
-                int* matrix_copy = (int *)malloc(N*N*sizeof(int));
+                int* matrix_copy = (int*)malloc(N*N*sizeof(int));
                 for (int i = 0; i < N; i++) {
                     for (int j = 0; j < N; j++) {
                         matrix_copy[i*N + j] = matrix[i*N + j];
@@ -194,7 +176,7 @@ void generate_tables_rec(int matrix[N*N], int pos, List* mult_tables, List* add_
                 push(mult_tables, matrix_copy);
             }
             if (iscommutative(matrix)) {
-                int* matrix_copy = (int *)malloc(N*N*sizeof(int));
+                int* matrix_copy = (int*)malloc(N*N*sizeof(int));
                 for (int i = 0; i < N; i++) {
                     for (int j = 0; j < N; j++) {
                         matrix_copy[i*N + j] = matrix[i*N + j];
@@ -217,14 +199,8 @@ void generate_tables(List* mult_tables, List* add_tables) {
 }
 
 void generate_semirings(List* semirings) {
-    List mult_tables;
-    mult_tables.head = NULL;
-    mult_tables.tail = NULL;
-    mult_tables.count = 0;
-    List add_tables;
-    add_tables.head = NULL;
-    add_tables.tail = NULL;
-    add_tables.count = 0;
+    List mult_tables = { .head = NULL, .tail = NULL, .count = 0 };
+    List add_tables  = { .head = NULL, .tail = NULL, .count = 0 };
 
     generate_tables(&mult_tables, &add_tables);
     struct Node* mult_temp = mult_tables.head;
@@ -240,15 +216,6 @@ void generate_semirings(List* semirings) {
             add_temp = add_temp->next;
         }
         mult_temp = mult_temp->next;
-    }
-}
-
-void print_list(List list) {
-    struct Node* temp = list.head;
-    while (temp != NULL) {
-        print_matrix(temp->value);
-        printf("\n");
-        temp = temp->next;
     }
 }
 
@@ -278,7 +245,7 @@ void print_semiring_list(List list) {
     }
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char** argv) {
     if (argc != 2) {
         printf("Wrong number of arguments. Expected 1, but was: %d\n", argc - 1);
         exit(1);
@@ -290,10 +257,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    List semirings;
-    semirings.head = NULL;
-    semirings.tail = NULL;
-    semirings.count = 0;
+    List semirings = { .head = NULL, .tail = NULL, .count = 0 };
     generate_semirings(&semirings);
 
     struct Node* temp = semirings.head;
