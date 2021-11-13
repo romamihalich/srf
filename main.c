@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define N 4
+int N;
 
 struct Node {
     void* value;
@@ -254,11 +254,7 @@ void print_list(List list) {
 
 void print_semiring(Semiring semiring) {
     printf("mult");
-    char white_space[2*N - 3];
-    for (int i = 0; i < 2*N - 3; i++) {
-        white_space[i] = ' ';
-    }
-    printf("%s", white_space);
+    printf("%*c", 2*N - 3, ' ');
     printf("add\n");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -282,7 +278,18 @@ void print_semiring_list(List list) {
     }
 }
 
-int main(void) {
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        printf("Wrong number of arguments. Expected 1, but was: %d\n", argc - 1);
+        exit(1);
+    }
+    char* input = argv[argc - 1];
+    N = atoi(input);
+    if (N == 0) {
+        printf("No positive integer provided\n");
+        exit(1);
+    }
+
     List semirings;
     semirings.head = NULL;
     semirings.tail = NULL;
