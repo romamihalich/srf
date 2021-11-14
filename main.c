@@ -22,11 +22,6 @@ bool is_empty(List list) {
 
 void push(List* list, void* item) {
     struct Node* elem = (struct Node*)malloc(sizeof(struct Node));
-    if (elem == NULL) {
-        printf("OS didn't give memory for elem\n");
-        exit(1);
-    }
-
     elem->value = item;
     elem->next = NULL;
     elem->prev = NULL;
@@ -168,6 +163,10 @@ void generate_tables_rec(int matrix[N*N], int pos, List* mult_tables, List* add_
         if (isassociative(matrix)) {
             if (isidempotent(matrix)) {
                 int* matrix_copy = (int*)malloc(N*N*sizeof(int));
+                if (matrix_copy == NULL) {
+                    printf("OS didn't give memory for matrix. Exiting...");
+                    exit(1);
+                }
                 for (int i = 0; i < N; i++) {
                     for (int j = 0; j < N; j++) {
                         matrix_copy[i*N + j] = matrix[i*N + j];
@@ -177,6 +176,10 @@ void generate_tables_rec(int matrix[N*N], int pos, List* mult_tables, List* add_
             }
             if (iscommutative(matrix)) {
                 int* matrix_copy = (int*)malloc(N*N*sizeof(int));
+                if (matrix_copy == NULL) {
+                    printf("OS didn't give memory for matrix. Exiting...");
+                    exit(1);
+                }
                 for (int i = 0; i < N; i++) {
                     for (int j = 0; j < N; j++) {
                         matrix_copy[i*N + j] = matrix[i*N + j];
