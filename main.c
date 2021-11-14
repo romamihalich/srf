@@ -266,8 +266,8 @@ int main(int argc, char** argv) {
     }
     char* input = argv[argc - 1];
     N = atoi(input);
-    if (N == 0) {
-        printf("No positive integer provided\n");
+    if (N <= 0) {
+        printf("Expected positive integer, but was: '%s'\n", input);
         exit(1);
     }
 
