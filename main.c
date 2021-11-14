@@ -218,6 +218,21 @@ void generate_semirings(List* semirings) {
     }
 }
 
+void filter_isomorphism(List* semirings) {
+    struct Node* temp = semirings->head;
+    while (temp != NULL) {
+        struct Node* temp_inner = temp->next;
+        while (temp_inner != NULL) {
+            if (areisomorphic(*((Semiring*)temp->value), *((Semiring*)temp_inner->value))) {
+                struct Node* temp_next = temp_inner->next;
+                delete(semirings, temp_inner);
+                temp_inner = temp_next;
+            } else temp_inner = temp_inner->next;
+        }
+        temp = temp->next;
+    }
+}
+
 void print_semiring(Semiring semiring) {
     printf("mult");
     printf("%*c", 2*N - 3, ' ');
@@ -258,19 +273,7 @@ int main(int argc, char** argv) {
 
     List semirings = { .head = NULL, .tail = NULL, .count = 0 };
     generate_semirings(&semirings);
-
-    struct Node* temp = semirings.head;
-    while (temp != NULL) {
-        struct Node* temp_inner = temp->next;
-        while (temp_inner != NULL) {
-            if (areisomorphic(*((Semiring*)temp->value), *((Semiring*)temp_inner->value))) {
-                struct Node* temp_next = temp_inner->next;
-                delete(&semirings, temp_inner);
-                temp_inner = temp_next;
-            } else temp_inner = temp_inner->next;
-        }
-        temp = temp->next;
-    }
+    filter_isomorphism(&semirings);
 
     print_semiring_list(semirings);
     printf("semirings.count: %d\n", semirings.count);
