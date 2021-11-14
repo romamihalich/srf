@@ -155,6 +155,20 @@ bool areisomorphic(Semiring r1, Semiring r2) {
     return result;
 }
 
+int* copy_matrix(int matrix[N*N]) {
+    int* matrix_copy = (int*)malloc(N*N*sizeof(int));
+    if (matrix_copy == NULL) {
+        printf("OS didn't give memory for matrix. Exiting...");
+        exit(1);
+    }
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            matrix_copy[i*N + j] = matrix[i*N + j];
+        }
+    }
+    return matrix_copy;
+}
+
 //  0 0  0 0  0 0  0 0  0 1  0 1  0 1  0 1  1 0  1 0  1 0  1 0  1 1  1 1  1 1  1 1 
 //  0 0  0 1  1 0  1 1  0 0  0 1  1 0  1 1  0 0  0 1  1 0  1 1  0 0  0 1  1 0  1 1
 
@@ -162,29 +176,11 @@ void generate_tables_rec(int matrix[N*N], int pos, List* mult_tables, List* add_
     if (pos == N*N) {
         if (isassociative(matrix)) {
             if (isidempotent(matrix)) {
-                int* matrix_copy = (int*)malloc(N*N*sizeof(int));
-                if (matrix_copy == NULL) {
-                    printf("OS didn't give memory for matrix. Exiting...");
-                    exit(1);
-                }
-                for (int i = 0; i < N; i++) {
-                    for (int j = 0; j < N; j++) {
-                        matrix_copy[i*N + j] = matrix[i*N + j];
-                    }
-                }
+                int* matrix_copy = copy_matrix(matrix);
                 push(mult_tables, matrix_copy);
             }
             if (iscommutative(matrix)) {
-                int* matrix_copy = (int*)malloc(N*N*sizeof(int));
-                if (matrix_copy == NULL) {
-                    printf("OS didn't give memory for matrix. Exiting...");
-                    exit(1);
-                }
-                for (int i = 0; i < N; i++) {
-                    for (int j = 0; j < N; j++) {
-                        matrix_copy[i*N + j] = matrix[i*N + j];
-                    }
-                }
+                int* matrix_copy = copy_matrix(matrix);
                 push(add_tables, matrix_copy);
             }
         }
