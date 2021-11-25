@@ -127,10 +127,21 @@ bool isisomorphism(int f[N], Semiring r1, Semiring r2) {
     return true;
 }
 
-void find_isomorphism(int arr[N], int pos, Semiring r1, Semiring r2, bool* result) {
+int* copy_array(int array[N]) {
+    int* array_copy = (int*)malloc(N*sizeof(int));
+    if (array_copy == NULL) {
+        printf("OS didn't give memory for array. Exiting...");
+        exit(1);
+    }
+    for (int i = 0; i < N; i++) {
+        array_copy[i] = array[i];
+    }
+    return array_copy;
+}
+
+void generate_arrays_rec(int arr[N], int pos, List* arrays) {
     if (pos == N) {
-        if (isisomorphism(arr, r1, r2))
-            *result = true;
+        push(arrays, copy_array(arr));
     } else {
         for (int i = 0; i < N; i++) {
             bool found = false;
@@ -143,16 +154,25 @@ void find_isomorphism(int arr[N], int pos, Semiring r1, Semiring r2, bool* resul
             if (found) 
                 continue;
             arr[pos] = i;
-            find_isomorphism(arr, pos + 1, r1, r2, result);
+            generate_arrays_rec(arr, pos + 1, arrays);
         }
     }
 }
 
-bool areisomorphic(Semiring r1, Semiring r2) {
+void generate_arrays(List* arrays) {
+    int array[N];
+    generate_arrays_rec(array, 0, arrays);
+}
+
+bool areisomorphic(Semiring r1, Semiring r2, List arrays) {
     bool result = false;
-    int arr[N];
-    find_isomorphism(arr, 0, r1, r2, &result);
-    return result;
+    struct Node* temp = arrays.head;
+    while (temp != NULL) {
+        if (isisomorphism(temp->value, r1, r2))
+            return true;
+        temp = temp->next;
+    }
+    return false;
 }
 
 int* copy_matrix(int matrix[N*N]) {
@@ -218,12 +238,12 @@ void generate_semirings(List* semirings) {
     }
 }
 
-void filter_isomorphism(List* semirings) {
+void filter_isomorphism(List* semirings, List arrays) {
     struct Node* temp = semirings->head;
     while (temp != NULL) {
         struct Node* temp_inner = temp->next;
         while (temp_inner != NULL) {
-            if (areisomorphic(*((Semiring*)temp->value), *((Semiring*)temp_inner->value))) {
+            if (areisomorphic(*((Semiring*)temp->value), *((Semiring*)temp_inner->value), arrays)) {
                 struct Node* temp_next = temp_inner->next;
                 delete(semirings, temp_inner);
                 temp_inner = temp_next;
@@ -273,9 +293,11 @@ int main(int argc, char** argv) {
 
     List semirings = { .head = NULL, .tail = NULL, .count = 0 };
     generate_semirings(&semirings);
-    filter_isomorphism(&semirings);
+    List arrays = { .head = NULL, .tail = NULL, .count = 0 };
+    generate_arrays(&arrays);
+    filter_isomorphism(&semirings, arrays);
 
     print_semiring_list(semirings);
-    printf("semirings.count: %d\n", semirings.count);
+    printf("count: %d\n", semirings.count);
     return 0;
 }
