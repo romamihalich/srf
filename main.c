@@ -1,65 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "list.h"
 
 int N;
-
-struct Node {
-    void* value;
-    struct Node* next;
-    struct Node* prev;
-};
-
-typedef struct {
-    struct Node* head;
-    struct Node* tail;
-    int count;
-} List;
-
-bool is_empty(List list) {
-    return list.head == NULL;
-}
-
-void push(List* list, void* item) {
-    struct Node* elem = (struct Node*)malloc(sizeof(struct Node));
-    elem->value = item;
-    elem->next = NULL;
-    elem->prev = NULL;
-
-    if (is_empty(*list)) {
-        list->count = 0;
-        list->head = list->tail = elem;
-    } else {
-        list->tail->next = elem;
-        elem->prev = list->tail;
-        list->tail = list->tail->next;
-    }
-    list->count++;
-}
-
-void delete(List* list, struct Node* elem) {
-    if (is_empty(*list)) {
-        printf("Nothing to delete. Exiting...");
-        exit(1);
-    }
-
-    if (elem->prev == NULL) {
-        list->head = list->head->next;
-        if (list->head == NULL)
-            list->tail = NULL;
-        else list->head->prev = NULL;
-    } else if (elem->next == NULL) {
-        list->tail = list->tail->prev;
-        if (list->tail == NULL)
-            list->head = NULL;
-        else list->tail->next = NULL;
-    } else {
-        elem->prev->next = elem->next;
-        elem->next->prev = elem->prev;
-    }
-    list->count--;
-    free(elem);
-}
 
 typedef struct {
     int* mult;
@@ -141,7 +85,7 @@ int* copy_array(int array[N]) {
 
 void generate_arrays_rec(int arr[N], int pos, List* arrays) {
     if (pos == N) {
-        push(arrays, copy_array(arr));
+        list_push(arrays, copy_array(arr));
     } else {
         for (int i = 0; i < N; i++) {
             bool found = false;
@@ -197,11 +141,11 @@ void generate_tables_rec(int matrix[N*N], int pos, List* mult_tables, List* add_
         if (isassociative(matrix)) {
             if (isidempotent(matrix)) {
                 int* matrix_copy = copy_matrix(matrix);
-                push(mult_tables, matrix_copy);
+                list_push(mult_tables, matrix_copy);
             }
             if (iscommutative(matrix)) {
                 int* matrix_copy = copy_matrix(matrix);
-                push(add_tables, matrix_copy);
+                list_push(add_tables, matrix_copy);
             }
         }
         return;
@@ -230,7 +174,7 @@ void generate_semirings(List* semirings) {
                 Semiring* semiring = (Semiring*)malloc(sizeof(Semiring));
                 semiring->mult = mult_temp->value;
                 semiring->add = add_temp->value;
-                push(semirings, semiring);
+                list_push(semirings, semiring);
             }
             add_temp = add_temp->next;
         }
@@ -245,7 +189,7 @@ void filter_isomorphism(List* semirings, List arrays) {
         while (temp_inner != NULL) {
             if (areisomorphic(*((Semiring*)temp->value), *((Semiring*)temp_inner->value), arrays)) {
                 struct Node* temp_next = temp_inner->next;
-                delete(semirings, temp_inner);
+                list_delete(semirings, temp_inner);
                 temp_inner = temp_next;
             } else temp_inner = temp_inner->next;
         }
