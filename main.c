@@ -189,13 +189,11 @@ void generate_mult_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* m
 }
 
 void generate_mult_tables(List* mult_tables) {
-    for (int i = 0; i < N; i++) {
-        int matrix[N*N];
-        for (int j = 0; j < N; j++) {
-            matrix[j*N + j] = j;
-        }
-        generate_mult_tables_rec(matrix, 0, 1, mult_tables);
+    int matrix[N*N];
+    for (int j = 0; j < N; j++) {
+        matrix[j*N + j] = j;
     }
+    generate_mult_tables_rec(matrix, 0, 1, mult_tables);
 }
 
 void generate_semirings(List* semirings) {

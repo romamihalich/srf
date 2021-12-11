@@ -3,6 +3,9 @@
 #include <stdbool.h>
 #include "list.h"
 
+
+// TODO: Add a counstructor
+
 bool list_is_empty(List list) {
     return list.head == NULL;
 }
