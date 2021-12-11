@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include "list.h"
 
 int N;
+char* OUTFILENAME;
 
 // TODO: extract Semiring into separate file
 
@@ -237,6 +239,8 @@ void filter_isomorphism(List* semirings, List arrays) {
     }
 }
 
+// TODO: Get rid of repeating below
+
 void print_semiring(Semiring semiring) {
     printf("mult");
     printf("%*c", 2*N - 3, ' ');
@@ -261,22 +265,78 @@ void print_semiring_list(List list) {
         printf("\n");
         temp = temp->next;
     }
+    printf("count: %d\n", list.count);
 }
 
-// TODO: add flag -o <file>
-// TODO: add flag -v (verbose)
+void fprint_semiring(FILE* fptr, Semiring semiring) {
+    fprintf(fptr, "mult");
+    fprintf(fptr, "%*c", 2*N - 3, ' ');
+    fprintf(fptr, "add\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            fprintf(fptr, "%d ", semiring.mult[i*N + j]);
+        }
+        fprintf(fptr, " ");
+        for (int j = 0; j < N; j++) {
+            fprintf(fptr, "%d ", semiring.add[i*N + j]);
+        }
+        fprintf(fptr, "\n");
+    }
+}
+
+void fprint_semiring_list(char* filename, List list) {
+    FILE* fptr = fopen(filename, "w");
+
+    struct Node* temp = list.head;
+    while (temp != NULL) {
+        Semiring semiring = *((Semiring*)temp->value);
+        fprint_semiring(fptr, semiring);
+        fprintf(fptr, "\n");
+        temp = temp->next;
+    }
+    fprintf(fptr, "count: %d\n", list.count);
+
+    fclose(fptr);
+}
+
+// TODO: add flag -v (verbose) maybe
+
+void print_usage(char* program_name) {
+    printf("Usage: %s N [-o <file>]\n", program_name);
+}
+
+void read_argv(int argc, char** argv) {
+    int opt;
+    while ((opt = getopt(argc, argv, "o:")) != -1) {
+        switch (opt) {
+        case 'o':
+            OUTFILENAME = optarg;
+            break;
+        default:
+            print_usage(argv[0]);
+            exit(1);
+        }
+    }
+    if (optind >= argc) {
+        printf("Provide N\n");
+        print_usage(argv[0]);
+        exit(1);
+    }
+    if (optind != argc - 1) {
+        printf("Too many arguments\n");
+        print_usage(argv[0]);
+        exit(1);
+    }
+    N = atoi(argv[optind]);
+    if (N <= 0) {
+        printf("Expected positive integer, but was: '%s'\n", argv[optind]);
+        print_usage(argv[0]);
+        exit(1);
+    }
+}
 
 int main(int argc, char** argv) {
-    if (argc != 2) {
-        printf("Wrong number of arguments. Expected 1, but was: %d\n", argc - 1);
-        exit(1);
-    }
-    char* input = argv[argc - 1];
-    N = atoi(input);
-    if (N <= 0) {
-        printf("Expected positive integer, but was: '%s'\n", input);
-        exit(1);
-    }
+    read_argv(argc, argv);
 
     List semirings = { .head = NULL, .tail = NULL, .count = 0 };
     generate_semirings(&semirings);
@@ -284,7 +344,10 @@ int main(int argc, char** argv) {
     generate_arrays(&arrays);
     filter_isomorphism(&semirings, arrays);
 
-    print_semiring_list(semirings);
-    printf("count: %d\n", semirings.count);
+    if (OUTFILENAME == NULL) {
+        print_semiring_list(semirings);
+    } else {
+        fprint_semiring_list(OUTFILENAME, semirings);
+    }
     return 0;
 }
