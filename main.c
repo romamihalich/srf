@@ -5,6 +5,8 @@
 
 int N;
 
+// TODO: extract Semiring into separate file
+
 typedef struct {
     int* mult;
     int* add;
@@ -260,6 +262,9 @@ void print_semiring_list(List list) {
         temp = temp->next;
     }
 }
+
+// TODO: add flag -o <file>
+// TODO: add flag -v (verbose)
 
 int main(int argc, char** argv) {
     if (argc != 2) {
