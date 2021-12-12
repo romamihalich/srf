@@ -239,35 +239,6 @@ void filter_isomorphism(List* semirings, List arrays) {
     }
 }
 
-// TODO: Get rid of repeating below
-
-void print_semiring(Semiring semiring) {
-    printf("mult");
-    printf("%*c", 2*N - 3, ' ');
-    printf("add\n");
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            printf("%d ", semiring.mult[i*N + j]);
-        }
-        printf(" ");
-        for (int j = 0; j < N; j++) {
-            printf("%d ", semiring.add[i*N + j]);
-        }
-        printf("\n");
-    }
-}
-
-void print_semiring_list(List list) {
-    struct Node* temp = list.head;
-    while (temp != NULL) {
-        Semiring semiring = *((Semiring*)temp->value);
-        print_semiring(semiring);
-        printf("\n");
-        temp = temp->next;
-    }
-    printf("count: %d\n", list.count);
-}
-
 void fprint_semiring(FILE* fptr, Semiring semiring) {
     fprintf(fptr, "mult");
     fprintf(fptr, "%*c", 2*N - 3, ' ');
@@ -284,9 +255,7 @@ void fprint_semiring(FILE* fptr, Semiring semiring) {
     }
 }
 
-void fprint_semiring_list(char* filename, List list) {
-    FILE* fptr = fopen(filename, "w");
-
+void fprint_semiring_list(FILE* fptr, List list) {
     struct Node* temp = list.head;
     while (temp != NULL) {
         Semiring semiring = *((Semiring*)temp->value);
@@ -345,9 +314,11 @@ int main(int argc, char** argv) {
     filter_isomorphism(&semirings, arrays);
 
     if (OUTFILENAME == NULL) {
-        print_semiring_list(semirings);
+        fprint_semiring_list(stdout, semirings);
     } else {
-        fprint_semiring_list(OUTFILENAME, semirings);
+        FILE* fptr = fopen(OUTFILENAME, "w");
+        fprint_semiring_list(fptr, semirings);
+        fclose(fptr);
     }
     return 0;
 }
