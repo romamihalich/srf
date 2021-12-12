@@ -145,7 +145,7 @@ int* copy_matrix(int matrix[N*N]) {
     return matrix_copy;
 }
 
-void generate_add_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* add_tables) {
+void generate_commutative_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* add_tables) {
     if (row_pos == N && col_pos == 0) {
         if (isassociative(matrix)) {
             int* matrix_copy = copy_matrix(matrix);
@@ -160,16 +160,16 @@ void generate_add_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* ad
         if (col_pos == N - 1)
             new_row_pos++;
         int new_col_pos = (col_pos + 1 + new_row_pos) % N;
-        generate_add_tables_rec(matrix, new_row_pos, new_col_pos, add_tables);
+        generate_commutative_tables_rec(matrix, new_row_pos, new_col_pos, add_tables);
     }
 }
 
-void generate_add_tables(List* mult_tables) {
+void generate_commutative_tables(List* mult_tables) {
     int matrix[N*N];
-    generate_add_tables_rec(matrix, 0, 0, mult_tables);
+    generate_commutative_tables_rec(matrix, 0, 0, mult_tables);
 }
 
-void generate_mult_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* mult_tables) {
+void generate_idempotent_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* mult_tables) {
     if (row_pos == N && col_pos == 0) {
         if (isassociative(matrix)) {
             int* matrix_copy = copy_matrix(matrix);
@@ -188,24 +188,19 @@ void generate_mult_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* m
             if (new_col_pos == 0)
                 new_row_pos++;
         }
-        generate_mult_tables_rec(matrix, new_row_pos, new_col_pos, mult_tables);
+        generate_idempotent_tables_rec(matrix, new_row_pos, new_col_pos, mult_tables);
     }
 }
 
-void generate_mult_tables(List* mult_tables) {
+void generate_idempotent_tables(List* mult_tables) {
     int matrix[N*N];
     for (int j = 0; j < N; j++) {
         matrix[j*N + j] = j;
     }
-    generate_mult_tables_rec(matrix, 0, 1, mult_tables);
+    generate_idempotent_tables_rec(matrix, 0, 1, mult_tables);
 }
 
-void generate_semirings(List* semirings) {
-    List mult_tables = list_new();
-    List add_tables  = list_new();
-
-    generate_mult_tables(&mult_tables);
-    generate_add_tables(&add_tables);
+void generate_semirings(List* semirings, List mult_tables, List add_tables) {
     struct Node* mult_temp = mult_tables.head;
     while (mult_temp != NULL) {
         bool iscomm = iscommutative(mult_temp->value);
@@ -306,7 +301,13 @@ int main(int argc, char** argv) {
     read_argv(argc, argv);
 
     List semirings = list_new();
-    generate_semirings(&semirings);
+    List mult_tables = list_new();
+    List add_tables  = list_new();
+
+    generate_idempotent_tables(&mult_tables);
+    generate_commutative_tables(&add_tables);
+    generate_semirings(&semirings, mult_tables, add_tables);
+
     List arrays = list_new();
     generate_arrays(&arrays);
     filter_isomorphism(&semirings, arrays);
