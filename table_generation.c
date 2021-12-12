@@ -1,11 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-
-#include "list.h"
-#include "table_check.h"
-
-extern int N;
+#include "table_generation.h"
 
 int* copy_matrix(int matrix[N*N]) {
     int* matrix_copy = (int*)malloc(N*N*sizeof(int));

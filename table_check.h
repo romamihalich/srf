@@ -1,6 +1,8 @@
 #ifndef TABLE_CHECK_H
 #define TABLE_CHECK_H
 
+#include <stdbool.h>
+
 extern int N;
 
 bool isassociative(int table[N*N]);

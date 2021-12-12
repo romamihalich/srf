@@ -1,10 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-
 #include "isomorphism.h"
-
-extern int N;
 
 bool isisomorphism(int f[N], Semiring r1, Semiring r2) {
     for (int a = 0; a < N; a++) {

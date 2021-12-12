@@ -4,6 +4,8 @@
 #include "list.h"
 #include "semiring.h"
 
+extern int N;
+
 void generate_arrays(List* arrays);
 bool areisomorphic(Semiring r1, Semiring r2, List arrays);
 

@@ -1,7 +1,4 @@
-#include <stdbool.h>
 #include "table_check.h"
-
-extern int N;
 
 bool isassociative(int table[N*N]) {
     for (int i = 0; i < N; i++) {
@@ -60,4 +57,3 @@ bool isdistributive_right(int mult[N*N], int add[N*N]) {
 bool isdistributive(int mult[N*N], int add[N*N]) {
     return isdistributive_left(mult, add) && isdistributive_right(mult, add);
 }
-
