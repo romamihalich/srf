@@ -264,8 +264,6 @@ void fprint_semiring_list(FILE* fptr, List list) {
         temp = temp->next;
     }
     fprintf(fptr, "count: %d\n", list.count);
-
-    fclose(fptr);
 }
 
 // TODO: add flag -v (verbose) maybe
