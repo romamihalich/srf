@@ -5,16 +5,10 @@
 
 #include "list.h"
 #include "table_check.h"
+#include "semiring.h"
 
 int N;
 char* OUTFILENAME;
-
-// TODO: extract Semiring into separate file
-
-typedef struct {
-    int* mult;
-    int* add;
-} Semiring;
 
 bool isisomorphism(int f[N], Semiring r1, Semiring r2) {
     for (int a = 0; a < N; a++) {
