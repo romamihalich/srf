@@ -3,8 +3,9 @@
 #include <stdbool.h>
 #include "list.h"
 
-
-// TODO: Add a counstructor
+List list_new() {
+    return (List) { .head = NULL, .tail = NULL, .count = 0 };
+}
 
 bool list_is_empty(List list) {
     return list.head == NULL;

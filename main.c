@@ -201,8 +201,8 @@ void generate_mult_tables(List* mult_tables) {
 }
 
 void generate_semirings(List* semirings) {
-    List mult_tables = { .head = NULL, .tail = NULL, .count = 0 };
-    List add_tables  = { .head = NULL, .tail = NULL, .count = 0 };
+    List mult_tables = list_new();
+    List add_tables  = list_new();
 
     generate_mult_tables(&mult_tables);
     generate_add_tables(&add_tables);
@@ -338,9 +338,9 @@ void read_argv(int argc, char** argv) {
 int main(int argc, char** argv) {
     read_argv(argc, argv);
 
-    List semirings = { .head = NULL, .tail = NULL, .count = 0 };
+    List semirings = list_new();
     generate_semirings(&semirings);
-    List arrays = { .head = NULL, .tail = NULL, .count = 0 };
+    List arrays = list_new();
     generate_arrays(&arrays);
     filter_isomorphism(&semirings, arrays);
 
