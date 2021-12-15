@@ -127,13 +127,13 @@ void fprint_stats(FILE* fptr, List semirings) {
         temp = temp->next;
     }
     fprintf(fptr, "count: %d\n", semirings.count);
-    fprintf(fptr, "iscommutative_count: %d\n", iscommutative_count);
-    fprintf(fptr, "isidempotent_count: %d\n", isidempotent_count);
-    fprintf(fptr, "ismono_count: %d\n", ismono_count);
-    fprintf(fptr, "isconst_add_count: %d\n", isconst_add_count);
+    fprintf(fptr, "comm_count: %d\n", iscommutative_count);
+    fprintf(fptr, "idem_count: %d\n", isidempotent_count);
+    fprintf(fptr, "mono_count: %d\n", ismono_count);
+    fprintf(fptr, "const_count: %d\n", isconst_add_count);
     fprintf(fptr, "zero_count: %d\n", zero_count);
     fprintf(fptr, "one_count: %d\n", one_count);
-    fprintf(fptr, "infinity_count: %d\n", infinity_count);
+    fprintf(fptr, "inf_count: %d\n", infinity_count);
 }
 
 void fprint_semiring_list(FILE* fptr, List list) {
