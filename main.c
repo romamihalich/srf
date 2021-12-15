@@ -9,6 +9,7 @@
 int N;
 char* OUTFILENAME;
 bool SYMOUT;
+bool VERBOSE;
 
 void generate_semirings(List* semirings, List mult_tables, List add_tables) {
     struct Node* mult_temp = mult_tables.head;
@@ -148,24 +149,27 @@ void fprint_semiring_list(FILE* fptr, List list) {
     }
 }
 
-// TODO: add flag -v (verbose) maybe
-
 void print_usage(char* program_name) {
     printf("Usage: %s N [-s -o <file>]\n", program_name);
-    printf("       -o <file> - send output to file");
-    printf("       -s        - symbolic output");
+    printf("       -o <file> - send output to file\n");
+    printf("       -s        - symbolic output\n");
+    printf("       -v        - print what program is doing\n");
 }
 
 void read_argv(int argc, char** argv) {
     SYMOUT = false;
+    VERBOSE = false;
     int opt;
-    while ((opt = getopt(argc, argv, "so:")) != -1) {
+    while ((opt = getopt(argc, argv, "vso:")) != -1) {
         switch (opt) {
         case 'o':
             OUTFILENAME = optarg;
             break;
         case 's':
             SYMOUT = true;
+            break;
+        case 'v':
+            VERBOSE = true;
             break;
         default:
             print_usage(argv[0]);
@@ -197,13 +201,18 @@ int main(int argc, char** argv) {
     List mult_tables = list_new();
     List add_tables  = list_new();
 
-    generate_idempotent_tables(&mult_tables);
+    if (VERBOSE) printf("Generating add tables...\n");
     generate_commutative_tables(&add_tables);
+    if (VERBOSE) printf("Generating mult tables...\n");
+    generate_idempotent_tables(&mult_tables);
+    if (VERBOSE) printf("Generating semirings...\n");
     generate_semirings(&semirings, mult_tables, add_tables);
 
     List arrays = list_new();
     generate_arrays(&arrays);
+    if (VERBOSE) printf("Filtering isomorphisms...\n");
     filter_isomorphism(&semirings, arrays);
+    if (VERBOSE) printf("Computing properties...\n");
     compute_properties(&semirings);
 
     if (OUTFILENAME == NULL) {
@@ -211,6 +220,7 @@ int main(int argc, char** argv) {
         fprint_stats(stdout, semirings);
     } else {
         FILE* fptr = fopen(OUTFILENAME, "w");
+        if (VERBOSE) printf("Writing output to file...\n");
         fprint_semiring_list(fptr, semirings);
         fprint_stats(fptr, semirings);
         fclose(fptr);
