@@ -61,7 +61,16 @@ void compute_properties(List* semirings) {
 void fprint_semiring(FILE* fptr, Semiring semiring) {
     fprintf(fptr, "mult");
     fprintf(fptr, "%*c", 2*N - 3, ' ');
-    fprintf(fptr, "add\n");
+    fprintf(fptr, "add");
+    fprintf(fptr, "%*c", 2*N - 2, ' ');
+    fprintf(fptr, " %c        ", semiring.iscommutative ? '+' : '-');
+    fprintf(fptr, " %c        ", semiring.isidempotent ? '+' : '-');
+    fprintf(fptr, " %c        ", semiring.ismono ? '+' : '-');
+    fprintf(fptr, " %c        ", semiring.isconst_add ? '+' : '-');
+    fprintf(fptr, " %c        ", semiring.zero != -1 ? '+' : '-');
+    fprintf(fptr, " %c        ", semiring.one != -1 ? '+' : '-');
+    fprintf(fptr, " %c        ", semiring.infinity != -1 ? '+' : '-');
+    fprintf(fptr, "\n");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             fprintf(fptr, "%d ", semiring.mult[i*N + j]);
@@ -72,13 +81,6 @@ void fprint_semiring(FILE* fptr, Semiring semiring) {
         }
         fprintf(fptr, "\n");
     }
-    fprintf(fptr, "iscommutative: %d\n", semiring.iscommutative);
-    fprintf(fptr, "isidempotent: %d\n", semiring.isidempotent);
-    fprintf(fptr, "ismono: %d\n", semiring.ismono);
-    fprintf(fptr, "isconst_add: %d\n", semiring.isconst_add);
-    fprintf(fptr, "zero: %d\n", semiring.zero);
-    fprintf(fptr, "one: %d\n", semiring.one);
-    fprintf(fptr, "infinity: %d\n", semiring.infinity);
 }
 
 void fprint_stats(FILE* fptr, List semirings) {
@@ -104,6 +106,7 @@ void fprint_stats(FILE* fptr, List semirings) {
             infinity_count++;
         temp = temp->next;
     }
+    fprintf(fptr, "count: %d\n", semirings.count);
     fprintf(fptr, "iscommutative_count: %d\n", iscommutative_count);
     fprintf(fptr, "isidempotent_count: %d\n", isidempotent_count);
     fprintf(fptr, "ismono_count: %d\n", ismono_count);
@@ -111,10 +114,11 @@ void fprint_stats(FILE* fptr, List semirings) {
     fprintf(fptr, "zero_count: %d\n", zero_count);
     fprintf(fptr, "one_count: %d\n", one_count);
     fprintf(fptr, "infinity_count: %d\n", infinity_count);
-    fprintf(fptr, "count: %d\n", semirings.count);
 }
 
 void fprint_semiring_list(FILE* fptr, List list) {
+    fprintf(fptr, "%*c", 4*N + 2, ' ');
+    fprintf(fptr, "comm      idem      mono      const     zero      one       inf\n");
     struct Node* temp = list.head;
     while (temp != NULL) {
         Semiring semiring = *((Semiring*)temp->value);
