@@ -59,10 +59,10 @@ void compute_properties(List* semirings) {
 }
 
 void fprint_semiring(FILE* fptr, Semiring semiring) {
-    fprintf(fptr, "mult");
-    fprintf(fptr, "%*c", 2*N - 3, ' ');
     fprintf(fptr, "add");
     fprintf(fptr, "%*c", 2*N - 2, ' ');
+    fprintf(fptr, "mult");
+    fprintf(fptr, "%*c", 2*N - 3, ' ');
     fprintf(fptr, " %c        ", semiring.iscommutative ? '+' : '-');
     fprintf(fptr, " %c        ", semiring.isidempotent ? '+' : '-');
     fprintf(fptr, " %c        ", semiring.ismono ? '+' : '-');
@@ -71,13 +71,26 @@ void fprint_semiring(FILE* fptr, Semiring semiring) {
     fprintf(fptr, " %c        ", semiring.one != -1 ? '+' : '-');
     fprintf(fptr, " %c        ", semiring.infinity != -1 ? '+' : '-');
     fprintf(fptr, "\n");
+    char symbols[N];
+    char ch = 'a';
+    for (int i = 0; i < N; i++) {
+        if (semiring.zero == i) {
+            symbols[i] = '0';
+        } else if (semiring.one == i) {
+            symbols[i] = '1';
+        } else if (semiring.infinity == i) {
+            symbols[i] = 'i';
+        } else {
+            symbols[i] = ch++;
+        }
+    }
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            fprintf(fptr, "%d ", semiring.mult[i*N + j]);
+            fprintf(fptr, "%c ", symbols[semiring.add[i*N + j]]);
         }
         fprintf(fptr, " ");
         for (int j = 0; j < N; j++) {
-            fprintf(fptr, "%d ", semiring.add[i*N + j]);
+            fprintf(fptr, "%c ", symbols[semiring.mult[i*N + j]]);
         }
         fprintf(fptr, "\n");
     }
