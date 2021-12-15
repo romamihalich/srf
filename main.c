@@ -8,6 +8,7 @@
 
 int N;
 char* OUTFILENAME;
+bool SYMOUT;
 
 void generate_semirings(List* semirings, List mult_tables, List add_tables) {
     struct Node* mult_temp = mult_tables.head;
@@ -72,25 +73,31 @@ void fprint_semiring(FILE* fptr, Semiring semiring) {
     fprintf(fptr, " %c        ", semiring.infinity != -1 ? '+' : '-');
     fprintf(fptr, "\n");
     char symbols[N];
-    char ch = 'a';
-    for (int i = 0; i < N; i++) {
-        if (semiring.zero == i) {
-            symbols[i] = '0';
-        } else if (semiring.one == i) {
-            symbols[i] = '1';
-        } else if (semiring.infinity == i) {
-            symbols[i] = 'i';
-        } else {
-            symbols[i] = ch++;
+    if (SYMOUT) {
+        char ch = 'a';
+        for (int i = 0; i < N; i++) {
+            if (semiring.zero == i) {
+                symbols[i] = '0';
+            } else if (semiring.one == i) {
+                symbols[i] = '1';
+            } else if (semiring.infinity == i) {
+                symbols[i] = 'i';
+            } else {
+                symbols[i] = ch++;
+            }
         }
-    }
+    } 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            fprintf(fptr, "%c ", symbols[semiring.add[i*N + j]]);
+            if (SYMOUT) {
+                fprintf(fptr, "%c ", symbols[semiring.add[i*N + j]]);
+            } else fprintf(fptr, "%d ", semiring.add[i*N + j]);
         }
         fprintf(fptr, " ");
         for (int j = 0; j < N; j++) {
-            fprintf(fptr, "%c ", symbols[semiring.mult[i*N + j]]);
+            if (SYMOUT) {
+                fprintf(fptr, "%c ", symbols[semiring.mult[i*N + j]]);
+            } else fprintf(fptr, "%d ", semiring.mult[i*N + j]);
         }
         fprintf(fptr, "\n");
     }
@@ -144,15 +151,21 @@ void fprint_semiring_list(FILE* fptr, List list) {
 // TODO: add flag -v (verbose) maybe
 
 void print_usage(char* program_name) {
-    printf("Usage: %s N [-o <file>]\n", program_name);
+    printf("Usage: %s N [-s -o <file>]\n", program_name);
+    printf("       -o <file> - send output to file");
+    printf("       -s        - symbolic output");
 }
 
 void read_argv(int argc, char** argv) {
+    SYMOUT = false;
     int opt;
-    while ((opt = getopt(argc, argv, "o:")) != -1) {
+    while ((opt = getopt(argc, argv, "so:")) != -1) {
         switch (opt) {
         case 'o':
             OUTFILENAME = optarg;
+            break;
+        case 's':
+            SYMOUT = true;
             break;
         default:
             print_usage(argv[0]);
