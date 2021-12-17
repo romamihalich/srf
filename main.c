@@ -150,7 +150,7 @@ void fprint_semiring_list(FILE* fptr, List list) {
 }
 
 void print_usage(char* program_name) {
-    printf("Usage: %s N [-s -o <file>]\n", program_name);
+    printf("Usage: %s N [-s -v -o <file>]\n", program_name);
     printf("       -o <file> - send output to file\n");
     printf("       -s        - symbolic output\n");
     printf("       -v        - print what program is doing\n");
