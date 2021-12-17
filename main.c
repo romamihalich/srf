@@ -194,6 +194,12 @@ void read_argv(int argc, char** argv) {
     }
 }
 
+void verbose(char* message) {
+    if (VERBOSE) {
+        printf("%s", message);
+    }
+}
+
 int main(int argc, char** argv) {
     read_argv(argc, argv);
 
@@ -201,18 +207,18 @@ int main(int argc, char** argv) {
     List mult_tables = list_new();
     List add_tables  = list_new();
 
-    if (VERBOSE) printf("Generating add tables...\n");
+    verbose("Generating add tables...\n");
     generate_commutative_tables(&add_tables);
-    if (VERBOSE) printf("Generating mult tables...\n");
+    verbose("Generating mult tables...\n");
     generate_idempotent_tables(&mult_tables);
-    if (VERBOSE) printf("Generating semirings...\n");
+    verbose("Generating semirings...\n");
     generate_semirings(&semirings, mult_tables, add_tables);
 
     List arrays = list_new();
     generate_arrays(&arrays);
-    if (VERBOSE) printf("Filtering isomorphisms...\n");
+    verbose("Filtering isomorphisms...\n");
     filter_isomorphism(&semirings, arrays);
-    if (VERBOSE) printf("Computing properties...\n");
+    verbose("Computing properties...\n");
     compute_properties(&semirings);
 
     if (OUTFILENAME == NULL) {
@@ -220,7 +226,7 @@ int main(int argc, char** argv) {
         fprint_stats(stdout, semirings);
     } else {
         FILE* fptr = fopen(OUTFILENAME, "w");
-        if (VERBOSE) printf("Writing output to file...\n");
+        verbose("Writing output to file...\n");
         fprint_semiring_list(fptr, semirings);
         fprint_stats(fptr, semirings);
         fclose(fptr);
