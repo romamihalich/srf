@@ -52,9 +52,21 @@ void fprint_stats(FILE* fptr, List semirings) {
     int zero_count = 0;
     int one_count = 0;
     int infinity_count = 0;
+
+    int comm_and_idemp = 0;
+    int inf_and_one = 0;
+
     struct Node* temp = semirings.head;
     while (temp != NULL) {
         Semiring* semiring = temp->value;
+
+        if (semiring->iscommutative && semiring->isidempotent)
+            comm_and_idemp++;
+
+        if (semiring->infinity != -1 && semiring->one != -1)
+            inf_and_one++;
+
+
         iscommutative_count += semiring->iscommutative;
         isidempotent_count += semiring->isidempotent;
         ismono_count += semiring->ismono;
@@ -75,6 +87,10 @@ void fprint_stats(FILE* fptr, List semirings) {
     fprintf(fptr, "zero_count: %d\n", zero_count);
     fprintf(fptr, "one_count: %d\n", one_count);
     fprintf(fptr, "inf_count: %d\n", infinity_count);
+
+
+    fprintf(fptr, "comm_and_idemp: %d\n", comm_and_idemp);
+    fprintf(fptr, "inf_and_one: %d\n", inf_and_one);
 }
 
 void fprint_semiring_list(FILE* fptr, List list) {
