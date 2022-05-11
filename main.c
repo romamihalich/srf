@@ -60,7 +60,6 @@ void compute_properties(List* semirings) {
         temp = temp->next;
     }
 }
-
 void print_usage(char* program_name) {
     printf("Usage: %s N [-s -v -o <file>]\n", program_name);
     printf("       -o <file> - send output to file\n");
@@ -112,6 +111,39 @@ void verbose(char* message) {
     }
 }
 
+void transpose(int* matrix) {
+    for (int i = 0; i < N; i++) {
+        for (int j = i + 1; j < N; j++) {
+            int temp = matrix[i*N + j];
+            matrix[i*N + j] = matrix[j*N + i];
+            matrix[j*N + i] = temp; 
+        }
+    }
+}
+
+void find_isomorph_dual(List semirings, List arrays, int* count, int* pos) {
+    *count = 0;
+    *pos = -1;
+    int curPos = 1;
+    struct Node* temp = semirings.head;
+    while (temp != NULL) {
+        Semiring* semiring = (Semiring*)temp->value;
+        if (semiring->iscommutative == false) {
+            Semiring* dual_semiring = (Semiring*)malloc(sizeof(Semiring));
+            dual_semiring->mult = copy_matrix(semiring->mult);
+            dual_semiring->add = copy_matrix(semiring->add);
+            transpose(dual_semiring->mult);
+
+            if (areisomorphic(*semiring, *dual_semiring, arrays)) {
+                *count += 1;
+                *pos = curPos;
+            }
+        }
+        curPos += 1;
+        temp = temp->next;
+    }
+}
+
 int main(int argc, char** argv) {
     read_argv(argc, argv);
 
@@ -133,15 +165,28 @@ int main(int argc, char** argv) {
     verbose("Computing properties...\n");
     compute_properties(&semirings);
 
+    int count;
+    int pos;
+    find_isomorph_dual(semirings, arrays, &count, &pos);
+
     if (OUTFILENAME == NULL) {
         fprint_semiring_list(stdout, semirings);
         fprint_stats(stdout, semirings);
+        if (count > 0) {
+            fprintf(stdout, "isomorph_dual_count: %d, ", count);
+            fprintf(stdout, "pos: %d\n", pos);
+        }
     } else {
         FILE* fptr = fopen(OUTFILENAME, "w");
         verbose("Writing output to file...\n");
         fprint_semiring_list(fptr, semirings);
         fprint_stats(fptr, semirings);
+        if (count > 0) {
+            fprintf(fptr, "isomorph_dual_count: %d, ", count);
+            fprintf(fptr, "pos: %d\n", pos);
+        }
         fclose(fptr);
     }
+
     return 0;
 }
