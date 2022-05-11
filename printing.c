@@ -96,11 +96,14 @@ void fprint_stats(FILE* fptr, List semirings) {
 void fprint_semiring_list(FILE* fptr, List list) {
     fprintf(fptr, "%*c", 4*N + 2, ' ');
     fprintf(fptr, "comm      idem      mono      const     zero      one       inf\n");
+    int pos = 1;
     struct Node* temp = list.head;
     while (temp != NULL) {
         Semiring semiring = *((Semiring*)temp->value);
+        fprintf(fptr, "pos: %d\n", pos);
         fprint_semiring(fptr, semiring);
         fprintf(fptr, "\n");
+        pos++;
         temp = temp->next;
     }
 }
