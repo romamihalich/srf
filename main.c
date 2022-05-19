@@ -108,7 +108,7 @@ void read_argv(int argc, char** argv) {
 
 void verbose(char* message) {
     if (VERBOSE) {
-        printf("%s", message);
+        fprintf(stderr, "%s", message);
     }
 }
 
@@ -159,13 +159,13 @@ int main(int argc, char** argv) {
     List mult_tables = list_new();
     List add_tables  = list_new();
 
-    pthread_t idem_thread;
-    pthread_create(&idem_thread, NULL, generate_idempotent_tables_th, (void*)&mult_tables);
+    pthread_t mult_tables_gen_th;
+    pthread_create(&mult_tables_gen_th, NULL, generate_idempotent_tables_th, (void*)&mult_tables);
 
     verbose("Generating add tables...\n");
     generate_commutative_tables(&add_tables);
 
-    pthread_join(idem_thread, NULL);
+    pthread_join(mult_tables_gen_th, NULL);
 
     verbose("Generating semirings...\n");
     generate_semirings(&semirings, mult_tables, add_tables);
