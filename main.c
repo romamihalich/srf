@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <pthread.h>
 
 #include "list.h"
 #include "semiring.h"
@@ -144,6 +145,13 @@ void find_isomorph_dual(List semirings, List arrays, int* count, int* pos) {
     }
 }
 
+void* generate_idempotent_tables_th(void* arg) {
+    List* mult_tables = (List*)arg;
+    verbose("Generating mult tables...\n");
+    generate_idempotent_tables(mult_tables);
+    return NULL;
+}
+
 int main(int argc, char** argv) {
     read_argv(argc, argv);
 
@@ -151,10 +159,14 @@ int main(int argc, char** argv) {
     List mult_tables = list_new();
     List add_tables  = list_new();
 
+    pthread_t idem_thread;
+    pthread_create(&idem_thread, NULL, generate_idempotent_tables_th, (void*)&mult_tables);
+
     verbose("Generating add tables...\n");
     generate_commutative_tables(&add_tables);
-    verbose("Generating mult tables...\n");
-    generate_idempotent_tables(&mult_tables);
+
+    pthread_join(idem_thread, NULL);
+
     verbose("Generating semirings...\n");
     generate_semirings(&semirings, mult_tables, add_tables);
 
