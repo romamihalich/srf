@@ -15,7 +15,7 @@ int* copy_matrix(int matrix[N*N]) {
 }
 
 void generate_commutative_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* add_tables) {
-    if (row_pos == N && col_pos == 0) {
+    if (row_pos == N && col_pos == N) {
         if (isassociative(matrix)) {
             int* matrix_copy = copy_matrix(matrix);
             list_push(add_tables, matrix_copy);
@@ -26,9 +26,11 @@ void generate_commutative_tables_rec(int matrix[N*N], int row_pos, int col_pos, 
         matrix[row_pos*N + col_pos] = i;
         matrix[col_pos*N + row_pos] = i;
         int new_row_pos = row_pos;
-        if (col_pos == N - 1)
+        int new_col_pos = col_pos + 1;
+        if (new_col_pos == N) {
             new_row_pos++;
-        int new_col_pos = (col_pos + 1 + new_row_pos) % N;
+            new_col_pos = new_row_pos;
+        }
         generate_commutative_tables_rec(matrix, new_row_pos, new_col_pos, add_tables);
     }
 }
