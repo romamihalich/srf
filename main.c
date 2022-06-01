@@ -1,3 +1,7 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <errno.h>
+#include <string.h>
 #include <unistd.h>
 #include <pthread.h>
 
@@ -7,11 +11,13 @@
 #include "table_generation.h"
 #include "isomorphism.h"
 #include "printing.h"
+#include "caching.h"
 
 int N;
 char* OUTFILENAME;
 bool SYMOUT;
 bool VERBOSE;
+char* CACHEDIR;
 
 void generate_semirings(List* semirings, List mult_tables, List add_tables) {
     struct Node* mult_temp = mult_tables.head;
@@ -62,17 +68,19 @@ void compute_properties(List* semirings) {
     }
 }
 void print_usage(char* program_name) {
-    printf("Usage: %s N [-s -v -o <file>]\n", program_name);
-    printf("       -o <file> - send output to file\n");
-    printf("       -s        - symbolic output\n");
-    printf("       -v        - print what program is doing\n");
+    printf("Usage: %s N [-s -v -c <cachedir> -o <file>]\n", program_name);
+    printf("       -o <file>     - send output to file\n");
+    printf("       -s            - symbolic output\n");
+    printf("       -v            - print what program is doing\n");
+    printf("       -c <cachedir> - use cache from (or generate cache into) <cachedir>\n");
 }
 
 void read_argv(int argc, char** argv) {
     SYMOUT = false;
     VERBOSE = false;
+    CACHEDIR = NULL;
     int opt;
-    while ((opt = getopt(argc, argv, "vso:")) != -1) {
+    while ((opt = getopt(argc, argv, "c:vso:")) != -1) {
         switch (opt) {
         case 'o':
             OUTFILENAME = optarg;
@@ -82,6 +90,9 @@ void read_argv(int argc, char** argv) {
             break;
         case 'v':
             VERBOSE = true;
+            break;
+        case 'c':
+            CACHEDIR = optarg;
             break;
         default:
             print_usage(argv[0]);
@@ -152,28 +163,108 @@ void* generate_idempotent_tables_th(void* arg) {
     return NULL;
 }
 
+struct Args {
+    List* mult_tables;
+    char* mult_filepath;
+};
+
+void* generate_idempotent_tables_and_cache_th(void* arg) {
+    List* mult_tables = ((struct Args*)arg)->mult_tables;
+    char* mult_filepath = ((struct Args*)arg)->mult_filepath;
+    verbose("Generating mult tables...\n");
+    generate_idempotent_tables(mult_tables);
+    cache_table_list(mult_filepath, mult_tables);
+    return NULL;
+}
+
 int main(int argc, char** argv) {
     read_argv(argc, argv);
 
     List semirings = list_new();
     List mult_tables = list_new();
     List add_tables  = list_new();
-
-    pthread_t mult_tables_gen_th;
-    pthread_create(&mult_tables_gen_th, NULL, generate_idempotent_tables_th, (void*)&mult_tables);
-
-    verbose("Generating add tables...\n");
-    generate_commutative_tables(&add_tables);
-
-    pthread_join(mult_tables_gen_th, NULL);
-
-    verbose("Generating semirings...\n");
-    generate_semirings(&semirings, mult_tables, add_tables);
-
     List arrays = list_new();
-    generate_arrays(&arrays);
-    verbose("Filtering isomorphisms...\n");
-    filter_isomorphism(&semirings, arrays);
+
+    if (CACHEDIR != NULL) {
+        if(mkdir(CACHEDIR, 0777) && errno != EEXIST) {
+            printf("ERROR: Can't create '%s'\n%m\n", CACHEDIR);
+            exit(1);
+        }
+
+        char* mult_filepath = malloc(strlen(CACHEDIR) + strlen("mult") + 2);
+        sprintf(mult_filepath, "%s/%s", CACHEDIR, "mult");
+
+        pthread_t mult_tables_gen_th;
+        bool mult_tables_gen_th_started = false;
+        if(access(mult_filepath, F_OK) != 0) { // not exists
+            struct Args* args = (struct Args*)malloc(sizeof(struct Args));
+            args->mult_tables = &mult_tables;
+            args->mult_filepath = mult_filepath;
+            pthread_create(&mult_tables_gen_th, NULL, generate_idempotent_tables_and_cache_th, (void*)args);
+            mult_tables_gen_th_started = true;
+        } else {
+            verbose("Skipped generating mult tables...\n");
+            read_table_list_cache(&mult_tables, mult_filepath);
+        }
+
+        char* add_filepath = malloc(strlen(CACHEDIR) + strlen("add") + 2);
+        sprintf(add_filepath, "%s/%s", CACHEDIR, "add");
+
+        if(access(add_filepath, F_OK) != 0) { // not exists
+            verbose("Generating add tables...\n");
+            generate_commutative_tables(&add_tables);
+            cache_table_list(add_filepath, &add_tables);
+        } else {
+            verbose("Skipped generating add tables\n");
+            read_table_list_cache(&add_tables, add_filepath);
+        }
+
+        if (mult_tables_gen_th_started) {
+            pthread_join(mult_tables_gen_th, NULL);
+        }
+
+        char* semir_filepath = malloc(strlen(CACHEDIR) + strlen("semir") + 2);
+        sprintf(semir_filepath, "%s/%s", CACHEDIR, "semir");
+
+        if(access(semir_filepath, F_OK) != 0) { // not exists
+            verbose("Generating semirings...\n");
+            generate_semirings(&semirings, mult_tables, add_tables);
+            cache_semiring_list(semir_filepath, &semirings);
+        } else {
+            verbose("Skipped generating semirings...\n");
+            read_semiring_list_cache(&semirings, semir_filepath);
+        }
+
+        char* semirnoiz_filepath = malloc(strlen(CACHEDIR) + strlen("semirnoiz") + 2);
+        sprintf(semirnoiz_filepath, "%s/%s", CACHEDIR, "semirnoiz");
+
+        if(access(semirnoiz_filepath, F_OK) != 0) { // not exists
+            generate_arrays(&arrays);
+            verbose("Filtering isomorphisms...\n");
+            filter_isomorphism(&semirings, arrays);
+            cache_semiring_list(semirnoiz_filepath, &semirings);
+        } else {
+            verbose("Skipped filtering isomorphisms...\n");
+            list_clear(&semirings);
+            read_semiring_list_cache(&semirings, semirnoiz_filepath);
+        }
+    } else {
+        pthread_t mult_tables_gen_th;
+        pthread_create(&mult_tables_gen_th, NULL, generate_idempotent_tables_th, (void*)&mult_tables);
+
+        verbose("Generating add tables...\n");
+        generate_commutative_tables(&add_tables);
+
+        pthread_join(mult_tables_gen_th, NULL);
+
+        verbose("Generating semirings...\n");
+        generate_semirings(&semirings, mult_tables, add_tables);
+
+        generate_arrays(&arrays);
+        verbose("Filtering isomorphisms...\n");
+        filter_isomorphism(&semirings, arrays);
+    }
+
     verbose("Computing properties...\n");
     compute_properties(&semirings);
 
