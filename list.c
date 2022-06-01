@@ -48,3 +48,15 @@ void list_delete(List* list, struct Node* elem) {
     list->count--;
     free(elem);
 }
+
+void list_clear(List* list) {
+    struct Node* temp = list->head;
+    while (temp != NULL) {
+        free(temp->value);
+        temp = temp->next;
+    }
+
+    list->head = NULL;
+    list->tail = NULL;
+    list->count = 0;
+}

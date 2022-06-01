@@ -21,5 +21,6 @@ List list_new();
 bool list_is_empty(List list);
 void list_push(List* list, void* item);
 void list_delete(List* list, struct Node* elem);
+void list_clear(List* list);
 
 #endif
