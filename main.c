@@ -18,6 +18,7 @@ char* OUTFILENAME;
 bool SYMOUT;
 bool VERBOSE;
 char* CACHEDIR;
+bool MULTCOMM;
 
 void generate_semirings(List* semirings, List mult_tables, List add_tables) {
     struct Node* mult_temp = mult_tables.head;
@@ -68,19 +69,21 @@ void compute_properties(List* semirings) {
     }
 }
 void print_usage(char* program_name) {
-    printf("Usage: %s N [-s -v -c <cachedir> -o <file>]\n", program_name);
+    printf("Usage: %s N [-s -v -k -c <cachedir> -o <file>]\n", program_name);
     printf("       -o <file>     - send output to file\n");
     printf("       -s            - symbolic output\n");
     printf("       -v            - print what program is doing\n");
     printf("       -c <cachedir> - use cache from (or generate cache into) <cachedir>\n");
+    printf("       -k            - generate mult commutative tables\n");
 }
 
 void read_argv(int argc, char** argv) {
     SYMOUT = false;
     VERBOSE = false;
     CACHEDIR = NULL;
+    MULTCOMM = false;
     int opt;
-    while ((opt = getopt(argc, argv, "c:vso:")) != -1) {
+    while ((opt = getopt(argc, argv, "c:vkso:")) != -1) {
         switch (opt) {
         case 'o':
             OUTFILENAME = optarg;
@@ -93,6 +96,9 @@ void read_argv(int argc, char** argv) {
             break;
         case 'c':
             CACHEDIR = optarg;
+            break;
+        case 'k':
+            MULTCOMM = true;
             break;
         default:
             print_usage(argv[0]);
@@ -156,10 +162,14 @@ void find_isomorph_dual(List semirings, List arrays, int* count, int* pos) {
     }
 }
 
-void* generate_idempotent_tables_th(void* arg) {
+void* generate_mult_tables_th(void* arg) {
     List* mult_tables = (List*)arg;
     verbose("Generating mult tables...\n");
-    generate_idempotent_tables(mult_tables);
+    if (MULTCOMM) {
+        generate_commutatuive_and_idempotent_tables(mult_tables);
+    } else {
+        generate_idempotent_tables(mult_tables);
+    }
     return NULL;
 }
 
@@ -168,11 +178,15 @@ struct Args {
     char* mult_filepath;
 };
 
-void* generate_idempotent_tables_and_cache_th(void* arg) {
+void* generate_mult_tables_and_cache_th(void* arg) {
     List* mult_tables = ((struct Args*)arg)->mult_tables;
     char* mult_filepath = ((struct Args*)arg)->mult_filepath;
     verbose("Generating mult tables...\n");
-    generate_idempotent_tables(mult_tables);
+    if (MULTCOMM) {
+        generate_commutatuive_and_idempotent_tables(mult_tables);
+    } else {
+        generate_idempotent_tables(mult_tables);
+    }
     cache_table_list(mult_filepath, mult_tables);
     return NULL;
 }
@@ -200,7 +214,7 @@ int main(int argc, char** argv) {
             struct Args* args = (struct Args*)malloc(sizeof(struct Args));
             args->mult_tables = &mult_tables;
             args->mult_filepath = mult_filepath;
-            pthread_create(&mult_tables_gen_th, NULL, generate_idempotent_tables_and_cache_th, (void*)args);
+            pthread_create(&mult_tables_gen_th, NULL, generate_mult_tables_and_cache_th, (void*)args);
             mult_tables_gen_th_started = true;
         } else {
             verbose("Skipped generating mult tables...\n");
@@ -250,7 +264,7 @@ int main(int argc, char** argv) {
         }
     } else {
         pthread_t mult_tables_gen_th;
-        pthread_create(&mult_tables_gen_th, NULL, generate_idempotent_tables_th, (void*)&mult_tables);
+        pthread_create(&mult_tables_gen_th, NULL, generate_mult_tables_th, (void*)&mult_tables);
 
         verbose("Generating add tables...\n");
         generate_commutative_tables(&add_tables);

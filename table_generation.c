@@ -70,3 +70,32 @@ void generate_idempotent_tables(List* mult_tables) {
     }
     generate_idempotent_tables_rec(matrix, 0, 1, mult_tables);
 }
+
+void generate_commutatuive_and_idempotent_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* mult_tables) {
+    if (row_pos == N - 1 && col_pos == N) {
+        if (isassociative(matrix)) {
+            int* matrix_copy = copy_matrix(matrix);
+            list_push(mult_tables, matrix_copy);
+        }
+        return;
+    }
+    for (int i = 0; i < N; i++) {
+        matrix[row_pos*N + col_pos] = i;
+        matrix[col_pos*N + row_pos] = i;
+        int new_row_pos = row_pos;
+        int new_col_pos = col_pos + 1;
+        if (new_col_pos == N) {
+            new_row_pos++;
+            new_col_pos = new_row_pos + 1;
+        }
+        generate_commutatuive_and_idempotent_tables_rec(matrix, new_row_pos, new_col_pos, mult_tables);
+    }
+}
+
+void generate_commutatuive_and_idempotent_tables(List* mult_tables) {
+    int matrix[N*N];
+    for (int j = 0; j < N; j++) {
+        matrix[j*N + j] = j;
+    }
+    generate_commutatuive_and_idempotent_tables_rec(matrix, 0, 1, mult_tables);
+}
