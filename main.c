@@ -170,6 +170,7 @@ void* generate_mult_tables_th(void* arg) {
     } else {
         generate_idempotent_tables(mult_tables);
     }
+    verbose("...done generating mult tables\n");
     return NULL;
 }
 
@@ -187,6 +188,7 @@ void* generate_mult_tables_and_cache_th(void* arg) {
     } else {
         generate_idempotent_tables(mult_tables);
     }
+    verbose("...done generating mult tables\n");
     cache_table_list(mult_filepath, mult_tables);
     return NULL;
 }
@@ -227,6 +229,7 @@ int main(int argc, char** argv) {
         if(access(add_filepath, F_OK) != 0) { // not exists
             verbose("Generating add tables...\n");
             generate_commutative_tables(&add_tables);
+            verbose("...done generating add tables\n");
             cache_table_list(add_filepath, &add_tables);
         } else {
             verbose("Skipped generating add tables\n");
@@ -268,6 +271,7 @@ int main(int argc, char** argv) {
 
         verbose("Generating add tables...\n");
         generate_commutative_tables(&add_tables);
+        verbose("...done generating add tables\n");
 
         pthread_join(mult_tables_gen_th, NULL);
 
