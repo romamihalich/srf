@@ -24,17 +24,16 @@ bool plus_one(int* arr, int len) {
 
 void generate_idempotent_tables_half(int matrix[N*N], int arr[N*N - N], unsigned long long stop, List* tables, char* text) {
     unsigned long long count = 0;
-    while (true) {
-        int inx = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                if (i != j) {
-                    matrix[i*N + j] = arr[inx];
-                    inx++;
-                }
+    int inx = 0;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            if (i != j) {
+                matrix[i*N + j] = arr[inx];
+                inx++;
             }
         }
-
+    }
+    while (true) {
         if (isassociative(matrix)) {
             int* matrix_copy = copy_matrix(matrix);
             list_push(tables, matrix_copy);
@@ -43,12 +42,25 @@ void generate_idempotent_tables_half(int matrix[N*N], int arr[N*N - N], unsigned
         count++;
 
         if (count % 1000000000 == 0) {
-            printf(text, count);
+            fprintf(stderr, text, count);
         }
 
-        if (count == stop || !plus_one(arr, N*N - N)) {
+        if (count == stop) {
             break;
         }
+
+        for (int i = N - 1; i >= 0; i--) {
+            for (int j = N - 1; j >= 0; j--) {
+                if (i != j) {
+                    if (matrix[i*N + j] != N - 1) {
+                        matrix[i*N + j]++;
+                        goto loop_end;
+                    }
+                    matrix[i*N + j] = 0;
+                }
+            }
+        }
+        loop_end:;
     }
 }
 
@@ -104,12 +116,14 @@ int main(void) {
     List* mult_tables_part1;
     pthread_join(generate_idempotent_tables_part1_th, (void*)&mult_tables_part1);
 
-    mult_tables_part2.tail->next = mult_tables_part2.head;
+    mult_tables_part1->tail->next = mult_tables_part2.head;
 
     List mult_tables = list_new();
     mult_tables.count = mult_tables_part1->count + mult_tables_part2.count;
     mult_tables.head = mult_tables_part1->head;
     mult_tables.tail = mult_tables_part2.tail;
+
+    fprintf(stderr, "result_count: %d\n", mult_tables.count);
 
     cache_table_list("./mult", &mult_tables);
 
