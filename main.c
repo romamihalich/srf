@@ -293,19 +293,15 @@ int main(int argc, char** argv) {
     if (OUTFILENAME == NULL) {
         fprint_semiring_list(stdout, semirings);
         fprint_stats(stdout, semirings);
-        if (count > 0) {
-            fprintf(stdout, "isomorph_dual_count: %d, ", count);
-            fprintf(stdout, "pos: %d\n", pos);
-        }
+        fprintf(stdout, "isomorph_dual_count: %d, ", count);
+        fprintf(stdout, "pos: %d\n", pos);
     } else {
         FILE* fptr = fopen(OUTFILENAME, "w");
         verbose("Writing output to file...\n");
         fprint_semiring_list(fptr, semirings);
         fprint_stats(fptr, semirings);
-        if (count > 0) {
-            fprintf(fptr, "isomorph_dual_count: %d, ", count);
-            fprintf(fptr, "pos: %d\n", pos);
-        }
+        fprintf(fptr, "isomorph_dual_count: %d, ", count);
+        fprintf(fptr, "pos: %d\n", pos);
         fclose(fptr);
     }
 
