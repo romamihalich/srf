@@ -40,8 +40,14 @@ void generate_commutative_tables(List* mult_tables) {
     generate_commutative_tables_rec(matrix, 0, 0, mult_tables);
 }
 
+unsigned long long mult_tables_count = 0;
+
 void generate_idempotent_tables_rec(int matrix[N*N], int row_pos, int col_pos, List* mult_tables) {
     if (row_pos == N && col_pos == 0) {
+        mult_tables_count++;
+        if (mult_tables_count % 1000000000 == 0) {
+            fprintf(stderr, "mult_tables_count: %llu\n", mult_tables_count);
+        }
         if (isassociative(matrix)) {
             int* matrix_copy = copy_matrix(matrix);
             list_push(mult_tables, matrix_copy);
