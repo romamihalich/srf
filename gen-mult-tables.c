@@ -64,64 +64,76 @@ void generate_idempotent_tables_half(int matrix[N*N], int arr[N*N - N], unsigned
     }
 }
 
-int* get_part2_arr(unsigned long long part1_count) {
+int* to_Nth(unsigned long long number) {
     int* result = (int*)malloc((N*N - N)*sizeof(int));
     for (int i = (N*N - N) - 1; i >= 0; i--) {
-        result[i] = part1_count % N;
-        part1_count /= N;
+        result[i] = number % N;
+        number /= N;
     }
     return result;
 }
 
-void* generate_idempotent_tables_part1(void* arg) {
-    List* mult_tables_part1 = (List*)malloc(sizeof(List));
-    mult_tables_part1->count = 0;
-    mult_tables_part1->head = NULL;
-    mult_tables_part1->tail = NULL;
+struct Args {
+    int* arr;
+    unsigned long long count;
+    char* text;
+};
 
-    unsigned long long int all = (unsigned long long int)pow(N, N*N-N);
-    unsigned long long int part1_count = all / 2; 
-    unsigned long long int part2_count = part1_count + all % 2;
+void* generate_idempotent_tables_th(void* arg) {
+    List* mult_tables = (List*)malloc(sizeof(List));
+    mult_tables->count = 0;
+    mult_tables->head = NULL;
+    mult_tables->tail = NULL;
+
+    int* arr = ((struct Args*)arg)->arr;
+    unsigned long long count = ((struct Args*)arg)->count;
+    char* text = ((struct Args*)arg)->text;
 
     int matrix[N*N];
     for (int i = 0; i < N; i++) {
         matrix[i*N + i] = i;
     }
-    // int arr[N*N - N];
-    int* arr = (int*)malloc((N*N - N)*sizeof(int));
-    for (int i = 0; i < N*N - N; i++) {
-        arr[i] = 0;
-    }
-    generate_idempotent_tables_half(matrix, arr, part1_count, mult_tables_part1, "part1_count: %llu\n");
-    return mult_tables_part1;
+    // int* arr = to_Nth(0);
+    generate_idempotent_tables_half(matrix, arr, count, mult_tables, text);
+    return mult_tables;
 }
 
 int main(void) {
     N = 5;
-    unsigned long long all = (int)pow(N, N*N-N);
-    unsigned long long part1_count = all / 2;
-    unsigned long long part2_count = part1_count + all % 2;
+    // int parts_count = 4;
+
+    unsigned long long all = (unsigned long long)pow(N, N*N-N);
+
+    fprintf(stderr, "all:         %llu\n", all);
 
     pthread_t generate_idempotent_tables_part1_th;
-    pthread_create(&generate_idempotent_tables_part1_th, NULL, generate_idempotent_tables_part1, NULL);
+    struct Args* args = (struct Args*)malloc(sizeof(struct Args));
+    args->arr = to_Nth(0);
+    args->count = all / 2;
+    args->text = "part1_count: %llu\n";
+    pthread_create(&generate_idempotent_tables_part1_th, NULL, generate_idempotent_tables_th, args);
 
-    int matrix[N*N];
-    for (int i = 0; i < N; i++) {
-        matrix[i*N + i] = i;
-    }
-    int* arr = get_part2_arr(part1_count);
-    List mult_tables_part2 = list_new();
-    generate_idempotent_tables_half(matrix, arr, part2_count, &mult_tables_part2, "part2_count: %llu\n");
+    // pthread_t generate_idempotent_tables_part2_th;
+    struct Args* args2 = (struct Args*)malloc(sizeof(struct Args));
+    args2->arr = to_Nth(all / 2);
+    args2->count = all / 2 + all % 2;
+    args2->text = "part2_count: %llu\n";
+    // pthread_create(&generate_idempotent_tables_part2_th, NULL, generate_idempotent_tables_th, args2);
+
+    List* mult_tables_part2 = generate_idempotent_tables_th(args2);
 
     List* mult_tables_part1;
     pthread_join(generate_idempotent_tables_part1_th, (void*)&mult_tables_part1);
 
-    mult_tables_part1->tail->next = mult_tables_part2.head;
+    // List* mult_tables_part2;
+    // pthread_join(generate_idempotent_tables_part2_th, (void*)&mult_tables_part2);
+
+    mult_tables_part1->tail->next = mult_tables_part2->head;
 
     List mult_tables = list_new();
-    mult_tables.count = mult_tables_part1->count + mult_tables_part2.count;
+    mult_tables.count = mult_tables_part1->count + mult_tables_part2->count;
     mult_tables.head = mult_tables_part1->head;
-    mult_tables.tail = mult_tables_part2.tail;
+    mult_tables.tail = mult_tables_part2->tail;
 
     fprintf(stderr, "result_count: %d\n", mult_tables.count);
 
