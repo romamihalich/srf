@@ -64,7 +64,7 @@ void generate_idempotent_tables_half(int matrix[N*N], int arr[N*N - N], unsigned
     }
 }
 
-int* get_part2_arr(int part1_count) {
+int* get_part2_arr(unsigned long long part1_count) {
     int* result = (int*)malloc((N*N - N)*sizeof(int));
     for (int i = (N*N - N) - 1; i >= 0; i--) {
         result[i] = part1_count % N;
@@ -98,9 +98,9 @@ void* generate_idempotent_tables_part1(void* arg) {
 
 int main(void) {
     N = 5;
-    int all = (int)pow(N, N*N-N);
-    int part1_count = all / 2; 
-    int part2_count = part1_count + all % 2;
+    unsigned long long all = (int)pow(N, N*N-N);
+    unsigned long long part1_count = all / 2;
+    unsigned long long part2_count = part1_count + all % 2;
 
     pthread_t generate_idempotent_tables_part1_th;
     pthread_create(&generate_idempotent_tables_part1_th, NULL, generate_idempotent_tables_part1, NULL);
