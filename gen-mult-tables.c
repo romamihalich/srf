@@ -96,14 +96,12 @@ void* generate_idempotent_tables_th(void* arg) {
     for (int i = 0; i < N; i++) {
         matrix[i*N + i] = i;
     }
-    // int* arr = to_Nth(0);
     generate_idempotent_tables_half(matrix, arr, count, mult_tables, text);
     return mult_tables;
 }
 
 int main(void) {
     N = ELEMENT_NUM;
-    // int parts_count = 4;
 
     unsigned long long all = (unsigned long long)pow(N, N*N-N);
 
@@ -128,16 +126,17 @@ int main(void) {
         pthread_join(threads[i], (void*)&mult_tables_arr[i]);
     }
 
-    mult_tables_arr[0]->tail->next = mult_tables_arr[1]->head;
+    int result_count = 0;
+    for (int i = 0; i < THREADS_NUM; i++) {
+        result_count += mult_tables_arr[i]->count;
+    }
 
-    List mult_tables = list_new();
-    mult_tables.count = mult_tables_arr[0]->count + mult_tables_arr[1]->count;
-    mult_tables.head = mult_tables_arr[0]->head;
-    mult_tables.tail = mult_tables_arr[1]->tail;
+    fprintf(stderr, "result_count: %d\n", result_count);
 
-    fprintf(stderr, "result_count: %d\n", mult_tables.count);
-
-    cache_table_list("./mult", &mult_tables);
+    cache_table_list("./mult", mult_tables_arr[0], false);
+    for (int i = 1; i < THREADS_NUM; i++) {
+        cache_table_list("./mult", mult_tables_arr[i], true);
+    }
 
     return 0;
 }

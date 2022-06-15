@@ -4,8 +4,13 @@ void cache_table(FILE* fptr, int* matrix) {
     fwrite(matrix, sizeof(int), N*N, fptr);
 }
 
-void cache_table_list(char* filename, List* tables) {
-    FILE* fptr = fopen(filename, "wb");
+void cache_table_list(char* filename, List* tables, bool append) {
+    FILE* fptr;
+    if (append) {
+        fptr = fopen(filename, "ab");
+    } else {
+        fptr = fopen(filename, "wb");
+    }
     // fwrite(&tables->count, sizeof(int), 1, fptr);
     struct Node* temp = tables->head;
     while (temp != NULL) {

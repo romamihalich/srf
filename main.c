@@ -189,7 +189,7 @@ void* generate_mult_tables_and_cache_th(void* arg) {
         generate_idempotent_tables(mult_tables);
     }
     verbose("...done generating mult tables\n");
-    cache_table_list(mult_filepath, mult_tables);
+    cache_table_list(mult_filepath, mult_tables, false);
     return NULL;
 }
 
@@ -230,7 +230,7 @@ int main(int argc, char** argv) {
             verbose("Generating add tables...\n");
             generate_commutative_tables(&add_tables);
             verbose("...done generating add tables\n");
-            cache_table_list(add_filepath, &add_tables);
+            cache_table_list(add_filepath, &add_tables, false);
         } else {
             verbose("Skipped generating add tables\n");
             read_table_list_cache(&add_tables, add_filepath);
