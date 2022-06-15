@@ -9,6 +9,9 @@
 #include "table_generation.h"
 #include "caching.h"
 
+#define THREADS_NUM 2
+#define ELEMENT_NUM 4
+
 int N;
 
 bool plus_one(int* arr, int len) {
@@ -99,41 +102,42 @@ void* generate_idempotent_tables_th(void* arg) {
 }
 
 int main(void) {
-    N = 5;
+    N = ELEMENT_NUM;
     // int parts_count = 4;
 
     unsigned long long all = (unsigned long long)pow(N, N*N-N);
 
     fprintf(stderr, "all:         %llu\n", all);
 
-    pthread_t generate_idempotent_tables_part1_th;
+    pthread_t threads[THREADS_NUM];
+
     struct Args* args = (struct Args*)malloc(sizeof(struct Args));
     args->arr = to_Nth(0);
     args->count = all / 2;
     args->text = "part1_count: %llu\n";
-    pthread_create(&generate_idempotent_tables_part1_th, NULL, generate_idempotent_tables_th, args);
+    pthread_create(&threads[0], NULL, generate_idempotent_tables_th, args);
 
     // pthread_t generate_idempotent_tables_part2_th;
     struct Args* args2 = (struct Args*)malloc(sizeof(struct Args));
     args2->arr = to_Nth(all / 2);
     args2->count = all / 2 + all % 2;
     args2->text = "part2_count: %llu\n";
-    // pthread_create(&generate_idempotent_tables_part2_th, NULL, generate_idempotent_tables_th, args2);
+    pthread_create(&threads[1], NULL, generate_idempotent_tables_th, args2);
 
-    List* mult_tables_part2 = generate_idempotent_tables_th(args2);
+    // List* mult_tables_part2 = generate_idempotent_tables_th(args2);
 
-    List* mult_tables_part1;
-    pthread_join(generate_idempotent_tables_part1_th, (void*)&mult_tables_part1);
+    List* mult_tables_arr[THREADS_NUM];
 
-    // List* mult_tables_part2;
-    // pthread_join(generate_idempotent_tables_part2_th, (void*)&mult_tables_part2);
+    pthread_join(threads[0], (void*)&mult_tables_arr[0]);
 
-    mult_tables_part1->tail->next = mult_tables_part2->head;
+    pthread_join(threads[1], (void*)&mult_tables_arr[1]);
+
+    mult_tables_arr[0]->tail->next = mult_tables_arr[1]->head;
 
     List mult_tables = list_new();
-    mult_tables.count = mult_tables_part1->count + mult_tables_part2->count;
-    mult_tables.head = mult_tables_part1->head;
-    mult_tables.tail = mult_tables_part2->tail;
+    mult_tables.count = mult_tables_arr[0]->count + mult_tables_arr[1]->count;
+    mult_tables.head = mult_tables_arr[0]->head;
+    mult_tables.tail = mult_tables_arr[1]->tail;
 
     fprintf(stderr, "result_count: %d\n", mult_tables.count);
 
