@@ -10,7 +10,7 @@
 #include "caching.h"
 
 #define THREADS_NUM 2
-#define ELEMENT_NUM 4
+#define ELEMENT_NUM 5
 
 int N;
 
@@ -25,7 +25,7 @@ bool plus_one(int* arr, int len) {
     return false;
 }
 
-void generate_idempotent_tables_half(int matrix[N*N], int arr[N*N - N], unsigned long long stop, List* tables, char* text) {
+void generate_idempotent_tables_half(int matrix[N*N], int arr[N*N - N], unsigned long long stop, List* tables, int part_num) {
     unsigned long long count = 0;
     int inx = 0;
     for (int i = 0; i < N; i++) {
@@ -45,7 +45,7 @@ void generate_idempotent_tables_half(int matrix[N*N], int arr[N*N - N], unsigned
         count++;
 
         if (count % 1000000000 == 0) {
-            fprintf(stderr, text, count);
+            fprintf(stderr, "part %d: %llu\n", part_num, count);
         }
 
         if (count == stop) {
@@ -79,7 +79,7 @@ int* to_Nth(unsigned long long number) {
 struct Args {
     int* arr;
     unsigned long long count;
-    char* text;
+    int part_num;
 };
 
 void* generate_idempotent_tables_th(void* arg) {
@@ -90,13 +90,13 @@ void* generate_idempotent_tables_th(void* arg) {
 
     int* arr = ((struct Args*)arg)->arr;
     unsigned long long count = ((struct Args*)arg)->count;
-    char* text = ((struct Args*)arg)->text;
+    int part_num = ((struct Args*)arg)->part_num;
 
     int matrix[N*N];
     for (int i = 0; i < N; i++) {
         matrix[i*N + i] = i;
     }
-    generate_idempotent_tables_half(matrix, arr, count, mult_tables, text);
+    generate_idempotent_tables_half(matrix, arr, count, mult_tables, part_num);
     return mult_tables;
 }
 
@@ -116,7 +116,7 @@ int main(void) {
         if (i == THREADS_NUM - 1) {
             args->count += all % THREADS_NUM;
         }
-        args->text = "part1_count: %llu\n";
+        args->part_num = i + 1;
         pthread_create(&threads[i], NULL, generate_idempotent_tables_th, args);
     }
 
