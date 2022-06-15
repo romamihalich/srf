@@ -1,0 +1,2680 @@
+                  comm      idem      mono      const     zero      one       inf
+pos: 1
+add      mult      +         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i i i  i i b i 
+i i i i  i i i c 
+
+pos: 2
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i i i  i i b i 
+i i i c  i i i c 
+
+pos: 3
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i b i  i i b i 
+i i i c  i i i c 
+
+pos: 4
+add      mult      +         +         +         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i b i  i i b i 
+i i i c  i i i c 
+
+pos: 5
+add      mult      +         -         -         -         -         -         -        
+a a a d  a a a a 
+a a a d  a b a a 
+a a a d  a a c a 
+d d d a  a a a d 
+
+pos: 6
+add      mult      +         -         -         -         -         -         -        
+a a a d  a a a a 
+a a a d  a b a a 
+a a a d  a a c a 
+d d d d  a a a d 
+
+pos: 7
+add      mult      +         -         -         -         -         -         -        
+a a a d  a a a a 
+a a a d  a b a a 
+a a c d  a a c a 
+d d d a  a a a d 
+
+pos: 8
+add      mult      +         -         -         -         -         -         -        
+a a a d  a a a a 
+a a a d  a b a a 
+a a c d  a a c a 
+d d d d  a a a d 
+
+pos: 9
+add      mult      +         -         -         -         -         -         -        
+a a a d  a a a a 
+a b a d  a b a a 
+a a c d  a a c a 
+d d d a  a a a d 
+
+pos: 10
+add      mult      +         +         -         -         -         -         -        
+a a a d  a a a a 
+a b a d  a b a a 
+a a c d  a a c a 
+d d d d  a a a d 
+
+pos: 11
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a a 
+a a a a  a a c a 
+a a a d  d d d d 
+
+pos: 12
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a a 
+a a c a  a a c a 
+a a a d  d d d d 
+
+pos: 13
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a a  a b a a 
+a a c a  a a c a 
+a a a d  d d d d 
+
+pos: 14
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a a 
+a a a d  a b a a 
+a a a d  a a c a 
+d d d d  d d d d 
+
+pos: 15
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a a 
+a a a d  a b a a 
+a a c d  a a c a 
+d d d d  d d d d 
+
+pos: 16
+add      mult      -         +         -         -         -         -         -        
+a a a d  a a a a 
+a b a d  a b a a 
+a a c d  a a c a 
+d d d d  d d d d 
+
+pos: 17
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a a 
+a a c a  a b a a 
+c c a c  a a c a 
+a a c d  d d d d 
+
+pos: 18
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a a 
+a a c a  a b a a 
+c c c c  a a c a 
+a a c d  d d d d 
+
+pos: 19
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a a 
+a b c a  a b a a 
+c c a c  a a c a 
+a a c d  d d d d 
+
+pos: 20
+add      mult      -         +         -         -         -         -         -        
+a a c a  a a a a 
+a b c a  a b a a 
+c c c c  a a c a 
+a a c d  d d d d 
+
+pos: 21
+add      mult      +         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i i i  i i b b 
+i i i i  i i b c 
+
+pos: 22
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i b b  i i b b 
+i i b b  i i b c 
+
+pos: 23
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i b b  i i b b 
+i i b c  i i b c 
+
+pos: 24
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i b c  i i b b 
+i i c b  i i b c 
+
+pos: 25
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i b c  i i b b 
+i i c c  i i b c 
+
+pos: 26
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i i i  i i b b 
+i i i i  i i b c 
+
+pos: 27
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i b b  i i b b 
+i i b b  i i b c 
+
+pos: 28
+add      mult      +         +         +         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i b b  i i b b 
+i i b c  i i b c 
+
+pos: 29
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i b c  i i b b 
+i i c b  i i b c 
+
+pos: 30
+add      mult      +         +         -         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i b c  i i b b 
+i i c c  i i b c 
+
+pos: 31
+add      mult      +         -         -         -         -         -         -        
+a a c c  a a a a 
+a a c c  a b a a 
+c c a a  a a c c 
+c c a a  a a c d 
+
+pos: 32
+add      mult      +         -         -         -         -         -         -        
+a a c c  a a a a 
+a a c c  a b a a 
+c c c c  a a c c 
+c c c c  a a c d 
+
+pos: 33
+add      mult      +         -         -         -         -         -         -        
+a a c c  a a a a 
+a a c c  a b a a 
+c c c c  a a c c 
+c c c d  a a c d 
+
+pos: 34
+add      mult      +         -         -         -         -         -         -        
+a a c c  a a a a 
+a b c c  a b a a 
+c c a a  a a c c 
+c c a a  a a c d 
+
+pos: 35
+add      mult      +         -         -         -         -         -         -        
+a a c c  a a a a 
+a b c c  a b a a 
+c c c c  a a c c 
+c c c c  a a c d 
+
+pos: 36
+add      mult      +         +         -         -         -         -         -        
+a a c c  a a a a 
+a b c c  a b a a 
+c c c c  a a c c 
+c c c d  a a c d 
+
+pos: 37
+add      mult      +         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c c  a a c c 
+d d c c  a a c d 
+
+pos: 38
+add      mult      +         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c c  a a c c 
+d d c d  a a c d 
+
+pos: 39
+add      mult      +         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c d  a a c c 
+d d d c  a a c d 
+
+pos: 40
+add      mult      +         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c d  a a c c 
+d d d d  a a c d 
+
+pos: 41
+add      mult      +         -         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c c  a a c c 
+d d c c  a a c d 
+
+pos: 42
+add      mult      +         +         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c c  a a c c 
+d d c d  a a c d 
+
+pos: 43
+add      mult      +         -         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c d  a a c c 
+d d d c  a a c d 
+
+pos: 44
+add      mult      +         +         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c d  a a c c 
+d d d d  a a c d 
+
+pos: 45
+add      mult      +         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b a a  a a c c 
+a b a a  a a c d 
+
+pos: 46
+add      mult      +         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b c c  a a c c 
+a b c c  a a c d 
+
+pos: 47
+add      mult      +         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b c c  a a c c 
+a b c d  a a c d 
+
+pos: 48
+add      mult      +         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b c d  a a c c 
+a b d c  a a c d 
+
+pos: 49
+add      mult      +         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b c d  a a c c 
+a b d d  a a c d 
+
+pos: 50
+add      mult      +         -         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b a a  a a c c 
+a b a a  a a c d 
+
+pos: 51
+add      mult      +         -         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b c c  a a c c 
+a b c c  a a c d 
+
+pos: 52
+add      mult      +         +         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b c c  a a c c 
+a b c d  a a c d 
+
+pos: 53
+add      mult      +         -         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b c d  a a c c 
+a b d c  a a c d 
+
+pos: 54
+add      mult      +         +         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b c d  a a c c 
+a b d d  a a c d 
+
+pos: 55
+add      mult      -         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i i i  i i b b 
+i i i i  i i c c 
+
+pos: 56
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i b b  i i b b 
+i i b c  i i c c 
+
+pos: 57
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i i i  i i b b 
+i i i i  i i c c 
+
+pos: 58
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i b b  i i b b 
+i i b c  i i c c 
+
+pos: 59
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c c  a a c c 
+d d c d  a a d d 
+
+pos: 60
+add      mult      -         +         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c c  a a c c 
+d d c d  a a d d 
+
+pos: 61
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b a a  a a c c 
+a b a a  a a d d 
+
+pos: 62
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b c c  a a c c 
+a b c d  a a d d 
+
+pos: 63
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b a a  a a c c 
+a b a a  a a d d 
+
+pos: 64
+add      mult      -         +         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b c c  a a c c 
+a b c d  a a d d 
+
+pos: 65
+add      mult      -         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i i i  i i b c 
+i i i i  i i b c 
+
+pos: 66
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i i i i  i a i i 
+i i b b  i i b c 
+i i b c  i i b c 
+
+pos: 67
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i i i  i i b c 
+i i i i  i i b c 
+
+pos: 68
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a i i  i a i i 
+i i b b  i i b c 
+i i b c  i i b c 
+
+pos: 69
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c c  a a c d 
+d d c d  a a c d 
+
+pos: 70
+add      mult      -         +         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c c  a a c d 
+d d c d  a a c d 
+
+pos: 71
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b a a  a a c d 
+a b a a  a a c d 
+
+pos: 72
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b c c  a a c d 
+a b c d  a a c d 
+
+pos: 73
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b a a  a a c d 
+a b a a  a a c d 
+
+pos: 74
+add      mult      -         +         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b c c  a a c d 
+a b c d  a a c d 
+
+pos: 75
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a a 
+a a c c  a a c d 
+a a c d  d d d d 
+
+pos: 76
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a a  a b a a 
+a a c c  a a c d 
+a a c d  d d d d 
+
+pos: 77
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c d  a a c d 
+d d d d  d d d d 
+
+pos: 78
+add      mult      -         +         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c d  a a c d 
+d d d d  d d d d 
+
+pos: 79
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b c c  a a c d 
+a b c d  d d d d 
+
+pos: 80
+add      mult      -         +         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b c c  a a c d 
+a b c d  d d d d 
+
+pos: 81
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a a 
+a a c c  c c c c 
+a a c c  c c c d 
+
+pos: 82
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a a 
+a a c c  c c c c 
+a a c d  c c c d 
+
+pos: 83
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a b a a  a b a a 
+a a c c  c c c c 
+a a c c  c c c d 
+
+pos: 84
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a a  a b a a 
+a a c c  c c c c 
+a a c d  c c c d 
+
+pos: 85
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c d  c c c c 
+d d d c  c c c d 
+
+pos: 86
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c d  c c c c 
+d d d d  c c c d 
+
+pos: 87
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c d  c c c c 
+d d d c  c c c d 
+
+pos: 88
+add      mult      -         +         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c d  c c c c 
+d d d d  c c c d 
+
+pos: 89
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a a 
+a a c a  c c c c 
+a a a d  d d d d 
+
+pos: 90
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a a 
+a a c c  c c c c 
+a a c d  d d d d 
+
+pos: 91
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a a  a b a a 
+a a c a  c c c c 
+a a a d  d d d d 
+
+pos: 92
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a a  a b a a 
+a a c c  c c c c 
+a a c d  d d d d 
+
+pos: 93
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a a 
+a a a d  a b a a 
+a a c d  c c c c 
+d d d d  d d d d 
+
+pos: 94
+add      mult      -         +         -         -         -         -         -        
+a a a d  a a a a 
+a b a d  a b a a 
+a a c d  c c c c 
+d d d d  d d d d 
+
+pos: 95
+add      mult      -         -         -         -         -         -         -        
+a a c c  a a a a 
+a a c c  a b a a 
+c c c c  c c c c 
+c c c d  d d d d 
+
+pos: 96
+add      mult      -         +         -         -         -         -         -        
+a a c c  a a a a 
+a b c c  a b a a 
+c c c c  c c c c 
+c c c d  d d d d 
+
+pos: 97
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a a a 
+a a c d  a b a a 
+c c c c  c c c c 
+d d c d  d d d d 
+
+pos: 98
+add      mult      -         +         -         -         -         -         -        
+a a c d  a a a a 
+a b c d  a b a a 
+c c c c  c c c c 
+d d c d  d d d d 
+
+pos: 99
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b c a  c c c c 
+a b a d  d d d d 
+
+pos: 100
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a a 
+b a b b  a b a a 
+a b c c  c c c c 
+a b c d  d d d d 
+
+pos: 101
+add      mult      -         +         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b c a  c c c c 
+a b a d  d d d d 
+
+pos: 102
+add      mult      -         +         -         -         -         -         -        
+a b a a  a a a a 
+b b b b  a b a a 
+a b c c  c c c c 
+a b c d  d d d d 
+
+pos: 103
+add      mult      +         -         -         +         -         +         +        
+i i i i  i i i i 
+i i i i  i a i a 
+i i i i  i i b b 
+i i i i  i a b 1 
+
+pos: 104
+add      mult      +         -         -         -         -         +         +        
+i i i i  i i i i 
+i i i i  i a i a 
+i i b b  i i b b 
+i i b b  i a b 1 
+
+pos: 105
+add      mult      +         +         +         -         -         +         +        
+i i i i  i i i i 
+i a i a  i a i a 
+i i b b  i i b b 
+i a b 1  i a b 1 
+
+pos: 106
+add      mult      +         -         -         -         -         +         -        
+a a c c  a a a a 
+a a c c  a b a b 
+c c a a  a a c c 
+c c a a  a b c 1 
+
+pos: 107
+add      mult      +         -         -         -         -         +         -        
+a a c c  a a a a 
+a a c c  a b a b 
+c c c c  a a c c 
+c c c c  a b c 1 
+
+pos: 108
+add      mult      +         -         -         -         -         +         -        
+a a c c  a a a a 
+a b c 1  a b a b 
+c c a a  a a c c 
+c 1 a b  a b c 1 
+
+pos: 109
+add      mult      +         +         -         -         -         +         -        
+a a c c  a a a a 
+a b c 1  a b a b 
+c c c c  a a c c 
+c 1 c 1  a b c 1 
+
+pos: 110
+add      mult      +         -         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a 0 1 b  0 a 0 a 
+b 1 0 a  0 0 b b 
+1 b a 0  0 a b 1 
+
+pos: 111
+add      mult      +         -         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a 0 1 b  0 a 0 a 
+b 1 b 1  0 0 b b 
+1 b 1 b  0 a b 1 
+
+pos: 112
+add      mult      +         +         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a 1 1  0 a 0 a 
+b 1 b 1  0 0 b b 
+1 1 1 1  0 a b 1 
+
+pos: 113
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a b 
+a a c a  c c c c 
+a a a a  a b a d 
+
+pos: 114
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a b a b  a b a b 
+a a c a  c c c c 
+a b a b  a b a d 
+
+pos: 115
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a b  a b a b 
+a a c a  c c c c 
+a b a d  a b a d 
+
+pos: 116
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a b a d  a b a b 
+a a c a  c c c c 
+a d a b  a b a d 
+
+pos: 117
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a d  a b a b 
+a a c a  c c c c 
+a d a d  a b a d 
+
+pos: 118
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a a 
+a a c a  a b a b 
+c c c c  c c c c 
+a a c a  a b a d 
+
+pos: 119
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a a 
+a b c b  a b a b 
+c c c c  c c c c 
+a b c b  a b a d 
+
+pos: 120
+add      mult      -         +         -         -         -         -         -        
+a a c a  a a a a 
+a b c b  a b a b 
+c c c c  c c c c 
+a b c d  a b a d 
+
+pos: 121
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a a 
+a b c d  a b a b 
+c c c c  c c c c 
+a d c b  a b a d 
+
+pos: 122
+add      mult      -         +         -         -         -         -         -        
+a a c a  a a a a 
+a b c d  a b a b 
+c c c c  c c c c 
+a d c d  a b a d 
+
+pos: 123
+add      mult      -         -         -         -         -         -         -        
+a b a b  a a a a 
+b a b a  a b a b 
+a b c b  c c c c 
+b a b a  a b a d 
+
+pos: 124
+add      mult      -         -         -         -         -         -         -        
+a b a b  a a a a 
+b b b b  a b a b 
+a b c b  c c c c 
+b b b b  a b a d 
+
+pos: 125
+add      mult      -         +         -         -         -         -         -        
+a b a b  a a a a 
+b b b b  a b a b 
+a b c b  c c c c 
+b b b d  a b a d 
+
+pos: 126
+add      mult      -         -         -         -         -         -         -        
+a b a d  a a a a 
+b b b b  a b a b 
+a b c d  c c c c 
+d b d b  a b a d 
+
+pos: 127
+add      mult      -         +         -         -         -         -         -        
+a b a d  a a a a 
+b b b b  a b a b 
+a b c d  c c c c 
+d b d d  a b a d 
+
+pos: 128
+add      mult      -         -         -         -         -         -         -        
+a b a d  a a a a 
+b b b d  a b a b 
+a b c d  c c c c 
+d d d b  a b a d 
+
+pos: 129
+add      mult      -         +         -         -         -         -         -        
+a b a d  a a a a 
+b b b d  a b a b 
+a b c d  c c c c 
+d d d d  a b a d 
+
+pos: 130
+add      mult      -         +         -         -         -         +         -        
+a b a b  a a a a 
+b b b b  a b a b 
+a b c 1  c c c c 
+b b 1 1  a b c 1 
+
+pos: 131
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a b 
+a a c a  c c c c 
+a a a a  a d a d 
+
+pos: 132
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a b  a b a b 
+a a c a  c c c c 
+a b a d  a d a d 
+
+pos: 133
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a a 
+a a c a  a b a b 
+c c c c  c c c c 
+a a c a  a d a d 
+
+pos: 134
+add      mult      -         +         -         -         -         -         -        
+a a c a  a a a a 
+a b c b  a b a b 
+c c c c  c c c c 
+a b c d  a d a d 
+
+pos: 135
+add      mult      -         +         -         -         -         -         -        
+a b a d  a a a a 
+b b b b  a b a b 
+a b c d  c c c c 
+d b d d  a d a d 
+
+pos: 136
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a b 
+a a c c  c c c c 
+a a c c  c d c d 
+
+pos: 137
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a b  a b a b 
+a a c c  c c c c 
+a b c d  c d c d 
+
+pos: 138
+add      mult      -         -         -         -         -         -         -        
+a b a b  a a a a 
+b a b a  a b a b 
+a b c d  c c c c 
+b a d c  c d c d 
+
+pos: 139
+add      mult      -         +         -         -         -         -         -        
+a b a b  a a a a 
+b b b b  a b a b 
+a b c d  c c c c 
+b b d d  c d c d 
+
+pos: 140
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a a 
+a a a a  a b a d 
+a a c a  c c c c 
+a a a a  a b a d 
+
+pos: 141
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a b  a b a d 
+a a c a  c c c c 
+a b a d  a b a d 
+
+pos: 142
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a a 
+a a c a  a b a d 
+c c c c  c c c c 
+a a c a  a b a d 
+
+pos: 143
+add      mult      -         +         -         -         -         -         -        
+a a c a  a a a a 
+a b c b  a b a d 
+c c c c  c c c c 
+a b c d  a b a d 
+
+pos: 144
+add      mult      -         +         -         -         -         -         -        
+a b a d  a a a a 
+b b b b  a b a d 
+a b c d  c c c c 
+d b d d  a b a d 
+
+pos: 145
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a b  a b a d 
+a a c a  c c c c 
+a b a d  d d d d 
+
+pos: 146
+add      mult      -         +         -         -         -         -         -        
+a a c a  a a a a 
+a b c b  a b a d 
+c c c c  c c c c 
+a b c d  d d d d 
+
+pos: 147
+add      mult      -         +         -         -         -         -         -        
+a b a d  a a a a 
+b b b d  a b a d 
+a b c d  c c c c 
+d d d d  d d d d 
+
+pos: 148
+add      mult      +         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a a a 
+i i i i  i a b a 
+i i i i  i a a c 
+
+pos: 149
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a a a  i a b a 
+i a a a  i a a c 
+
+pos: 150
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a a a  i a b a 
+i a a c  i a a c 
+
+pos: 151
+add      mult      +         +         +         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b a  i a b a 
+i a a c  i a a c 
+
+pos: 152
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a c  i a a a 
+i a a c  i a b a 
+i c c a  i a a c 
+
+pos: 153
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a c  i a a a 
+i a a c  i a b a 
+i c c c  i a a c 
+
+pos: 154
+add      mult      +         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a c  i a a a 
+i a b c  i a b a 
+i c c a  i a a c 
+
+pos: 155
+add      mult      +         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a c  i a a a 
+i a b c  i a b a 
+i c c c  i a a c 
+
+pos: 156
+add      mult      +         -         -         -         -         -         -        
+a b b b  a a a a 
+b a a a  a b b b 
+b a a a  a b c b 
+b a a a  a b b d 
+
+pos: 157
+add      mult      +         -         -         -         -         -         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b b b  a b c b 
+b b b b  a b b d 
+
+pos: 158
+add      mult      +         -         -         -         -         -         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b b b  a b c b 
+b b b d  a b b d 
+
+pos: 159
+add      mult      +         +         -         -         -         -         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b c b  a b c b 
+b b b d  a b b d 
+
+pos: 160
+add      mult      +         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b b  a b b b 
+b b b b  a b c b 
+d b b b  a b b d 
+
+pos: 161
+add      mult      +         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b b  a b b b 
+b b b b  a b c b 
+d b b d  a b b d 
+
+pos: 162
+add      mult      +         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b b  a b b b 
+b b c b  a b c b 
+d b b b  a b b d 
+
+pos: 163
+add      mult      +         +         -         -         -         -         -        
+a b b d  a a a a 
+b b b b  a b b b 
+b b c b  a b c b 
+d b b d  a b b d 
+
+pos: 164
+add      mult      +         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b d  a b b b 
+b b b d  a b c b 
+d d d b  a b b d 
+
+pos: 165
+add      mult      +         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b d  a b b b 
+b b b d  a b c b 
+d d d d  a b b d 
+
+pos: 166
+add      mult      +         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b d  a b b b 
+b b c d  a b c b 
+d d d b  a b b d 
+
+pos: 167
+add      mult      +         +         -         -         -         -         -        
+a b b d  a a a a 
+b b b d  a b b b 
+b b c d  a b c b 
+d d d d  a b b d 
+
+pos: 168
+add      mult      +         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a a a  0 a b a 
+c a a a  0 a a c 
+
+pos: 169
+add      mult      +         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a a a  0 a b a 
+c a a c  0 a a c 
+
+pos: 170
+add      mult      +         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a b a  0 a b a 
+c a a c  0 a a c 
+
+pos: 171
+add      mult      +         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a c  0 a a a 
+b a a c  0 a b a 
+c c c a  0 a a c 
+
+pos: 172
+add      mult      +         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a c  0 a a a 
+b a a c  0 a b a 
+c c c c  0 a a c 
+
+pos: 173
+add      mult      +         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a c  0 a a a 
+b a b c  0 a b a 
+c c c a  0 a a c 
+
+pos: 174
+add      mult      +         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a c  0 a a a 
+b a b c  0 a b a 
+c c c c  0 a a c 
+
+pos: 175
+add      mult      -         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a a a 
+i i i i  i a b a 
+i i i i  i c c c 
+
+pos: 176
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a a a  i a b a 
+i a a c  i c c c 
+
+pos: 177
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b a  i a b a 
+i a a c  i c c c 
+
+pos: 178
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a c  i a a a 
+i a a c  i a b a 
+i c c c  i c c c 
+
+pos: 179
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a c  i a a a 
+i a b c  i a b a 
+i c c c  i c c c 
+
+pos: 180
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a b a  i a a a 
+i b a b  i a b a 
+i a b c  i c c c 
+
+pos: 181
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a b a  i a a a 
+i b b b  i a b a 
+i a b c  i c c c 
+
+pos: 182
+add      mult      -         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b b  a b b b 
+b b b b  a b c b 
+d b b d  a d d d 
+
+pos: 183
+add      mult      -         +         -         -         -         -         -        
+a b b d  a a a a 
+b b b b  a b b b 
+b b c b  a b c b 
+d b b d  a d d d 
+
+pos: 184
+add      mult      -         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b d  a b b b 
+b b b d  a b c b 
+d d d d  a d d d 
+
+pos: 185
+add      mult      -         +         -         -         -         -         -        
+a b b d  a a a a 
+b b b d  a b b b 
+b b c d  a b c b 
+d d d d  a d d d 
+
+pos: 186
+add      mult      -         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a a a  0 a b a 
+c a a c  0 c c c 
+
+pos: 187
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a b a  0 a b a 
+c a a c  0 c c c 
+
+pos: 188
+add      mult      -         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a c  0 a a a 
+b a a c  0 a b a 
+c c c c  0 c c c 
+
+pos: 189
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a c  0 a a a 
+b a b c  0 a b a 
+c c c c  0 c c c 
+
+pos: 190
+add      mult      -         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a b a  0 a a a 
+b b a b  0 a b a 
+c a b c  0 c c c 
+
+pos: 191
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a b a  0 a a a 
+b b b b  0 a b a 
+c a b c  0 c c c 
+
+pos: 192
+add      mult      +         -         -         +         -         +         +        
+i i i i  i i i i 
+i i i i  i a a a 
+i i i i  i a b b 
+i i i i  i a b 1 
+
+pos: 193
+add      mult      +         -         -         -         -         +         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a a a  i a b b 
+i a a a  i a b 1 
+
+pos: 194
+add      mult      +         -         -         -         -         +         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b b  i a b b 
+i a b b  i a b 1 
+
+pos: 195
+add      mult      +         +         +         -         -         +         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b b  i a b b 
+i a b 1  i a b 1 
+
+pos: 196
+add      mult      +         -         -         -         -         +         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b 1  i a b b 
+i a 1 b  i a b 1 
+
+pos: 197
+add      mult      +         +         -         -         -         +         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b 1  i a b b 
+i a 1 1  i a b 1 
+
+pos: 198
+add      mult      +         -         -         -         -         +         +        
+i i i i  i i i i 
+i a b b  i a a a 
+i b a a  i a b b 
+i b a a  i a b 1 
+
+pos: 199
+add      mult      +         -         -         -         -         +         +        
+i i i i  i i i i 
+i a b b  i a a a 
+i b b b  i a b b 
+i b b b  i a b 1 
+
+pos: 200
+add      mult      +         +         -         -         -         +         +        
+i i i i  i i i i 
+i a b b  i a a a 
+i b b b  i a b b 
+i b b 1  i a b 1 
+
+pos: 201
+add      mult      +         -         -         -         -         +         +        
+i i i i  i i i i 
+i a b 1  i a a a 
+i b b b  i a b b 
+i 1 b b  i a b 1 
+
+pos: 202
+add      mult      +         +         -         -         -         +         +        
+i i i i  i i i i 
+i a b 1  i a a a 
+i b b b  i a b b 
+i 1 b 1  i a b 1 
+
+pos: 203
+add      mult      +         -         -         -         -         +         +        
+i i i i  i i i i 
+i a b 1  i a a a 
+i b b 1  i a b b 
+i 1 1 b  i a b 1 
+
+pos: 204
+add      mult      +         +         -         -         -         +         +        
+i i i i  i i i i 
+i a b 1  i a a a 
+i b b 1  i a b b 
+i 1 1 1  i a b 1 
+
+pos: 205
+add      mult      +         -         -         -         -         +         -        
+a b b b  a a a a 
+b a a a  a b b b 
+b a a a  a b c c 
+b a a a  a b c 1 
+
+pos: 206
+add      mult      +         -         -         -         -         +         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b b b  a b c c 
+b b b b  a b c 1 
+
+pos: 207
+add      mult      +         -         -         -         -         +         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b c c  a b c c 
+b b c c  a b c 1 
+
+pos: 208
+add      mult      +         +         -         -         -         +         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b c c  a b c c 
+b b c 1  a b c 1 
+
+pos: 209
+add      mult      +         -         -         -         -         +         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b c 1  a b c c 
+b b 1 c  a b c 1 
+
+pos: 210
+add      mult      +         +         -         -         -         +         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b c 1  a b c c 
+b b 1 1  a b c 1 
+
+pos: 211
+add      mult      +         -         -         -         -         +         -        
+a b c c  a a a a 
+b b b b  a b b b 
+c b b b  a b c c 
+c b b b  a b c 1 
+
+pos: 212
+add      mult      +         -         -         -         -         +         -        
+a b c c  a a a a 
+b b b b  a b b b 
+c b c c  a b c c 
+c b c c  a b c 1 
+
+pos: 213
+add      mult      +         +         -         -         -         +         -        
+a b c c  a a a a 
+b b b b  a b b b 
+c b c c  a b c c 
+c b c 1  a b c 1 
+
+pos: 214
+add      mult      +         -         -         -         -         +         -        
+a b c c  a a a a 
+b b c c  a b b b 
+c c b b  a b c c 
+c c b b  a b c 1 
+
+pos: 215
+add      mult      +         -         -         -         -         +         -        
+a b c c  a a a a 
+b b c c  a b b b 
+c c c c  a b c c 
+c c c c  a b c 1 
+
+pos: 216
+add      mult      +         +         -         -         -         +         -        
+a b c c  a a a a 
+b b c c  a b b b 
+c c c c  a b c c 
+c c c 1  a b c 1 
+
+pos: 217
+add      mult      +         -         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a a a  0 a a a 
+b a a a  0 a b b 
+1 a a a  0 a b 1 
+
+pos: 218
+add      mult      +         -         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a a a  0 a a a 
+b a b b  0 a b b 
+1 a b b  0 a b 1 
+
+pos: 219
+add      mult      +         +         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a a a  0 a a a 
+b a b b  0 a b b 
+1 a b 1  0 a b 1 
+
+pos: 220
+add      mult      +         -         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a a a  0 a a a 
+b a b 1  0 a b b 
+1 a 1 b  0 a b 1 
+
+pos: 221
+add      mult      +         +         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a a a  0 a a a 
+b a b 1  0 a b b 
+1 a 1 1  0 a b 1 
+
+pos: 222
+add      mult      +         -         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a b b  0 a a a 
+b b a a  0 a b b 
+1 b a a  0 a b 1 
+
+pos: 223
+add      mult      +         -         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a b b  0 a a a 
+b b b b  0 a b b 
+1 b b b  0 a b 1 
+
+pos: 224
+add      mult      +         +         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a b b  0 a a a 
+b b b b  0 a b b 
+1 b b 1  0 a b 1 
+
+pos: 225
+add      mult      +         -         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a b 1  0 a a a 
+b b b b  0 a b b 
+1 1 b b  0 a b 1 
+
+pos: 226
+add      mult      +         +         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a b 1  0 a a a 
+b b b b  0 a b b 
+1 1 b 1  0 a b 1 
+
+pos: 227
+add      mult      +         -         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a b 1  0 a a a 
+b b b 1  0 a b b 
+1 1 1 b  0 a b 1 
+
+pos: 228
+add      mult      +         +         -         -         +         +         -        
+0 a b 1  0 0 0 0 
+a a b 1  0 a a a 
+b b b 1  0 a b b 
+1 1 1 1  0 a b 1 
+
+pos: 229
+add      mult      -         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a a a 
+i i i i  i a b b 
+i i i i  i a c c 
+
+pos: 230
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a a a  i a b b 
+i a a a  i a c c 
+
+pos: 231
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b b  i a b b 
+i a b c  i a c c 
+
+pos: 232
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a b c  i a a a 
+i b b b  i a b b 
+i c b c  i a c c 
+
+pos: 233
+add      mult      -         -         -         -         -         -         -        
+a b b b  a a a a 
+b a a a  a b b b 
+b a a a  a b c c 
+b a a a  a b d d 
+
+pos: 234
+add      mult      -         -         -         -         -         -         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b b b  a b c c 
+b b b b  a b d d 
+
+pos: 235
+add      mult      -         +         -         -         -         -         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b c c  a b c c 
+b b c d  a b d d 
+
+pos: 236
+add      mult      -         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a a a  0 a b b 
+c a a a  0 a c c 
+
+pos: 237
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a b b  0 a b b 
+c a b c  0 a c c 
+
+pos: 238
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a b c  0 a a a 
+b b b b  0 a b b 
+c c b c  0 a c c 
+
+pos: 239
+add      mult      -         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a a a 
+i i i i  i a b c 
+i i i i  i a b c 
+
+pos: 240
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a a a  i a b c 
+i a a a  i a b c 
+
+pos: 241
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b b  i a b c 
+i a b c  i a b c 
+
+pos: 242
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a b c  i a a a 
+i b b b  i a b c 
+i c b c  i a b c 
+
+pos: 243
+add      mult      -         -         -         -         -         -         -        
+a b b b  a a a a 
+b a a a  a b b b 
+b a a a  a b c d 
+b a a a  a b c d 
+
+pos: 244
+add      mult      -         -         -         -         -         -         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b b b  a b c d 
+b b b b  a b c d 
+
+pos: 245
+add      mult      -         +         -         -         -         -         -        
+a b b b  a a a a 
+b b b b  a b b b 
+b b c c  a b c d 
+b b c d  a b c d 
+
+pos: 246
+add      mult      -         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a a a  0 a b c 
+c a a a  0 a b c 
+
+pos: 247
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a b b  0 a b c 
+c a b c  0 a b c 
+
+pos: 248
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a b c  0 a a a 
+b b b b  0 a b c 
+c c b c  0 a b c 
+
+pos: 249
+add      mult      -         -         -         +         -         +         +        
+i i i i  i i i i 
+i i i i  i a a a 
+i i i i  i a 1 b 
+i i i i  i b b b 
+
+pos: 250
+add      mult      -         +         -         -         -         +         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a 1 1  i a 1 b 
+i a 1 b  i b b b 
+
+pos: 251
+add      mult      -         +         -         -         +         +         -        
+0 a 1 b  0 0 0 0 
+a a a a  0 a a a 
+1 a 1 1  0 a 1 b 
+b a 1 b  0 b b b 
+
+pos: 252
+add      mult      -         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a a a 
+i i i i  i b b b 
+i i i i  i c c c 
+
+pos: 253
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b a  i b b b 
+i a a c  i c c c 
+
+pos: 254
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a a 
+i a b b  i b b b 
+i a b c  i c c c 
+
+pos: 255
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a b a  0 b b b 
+c a a c  0 c c c 
+
+pos: 256
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a a 
+b a b b  0 b b b 
+c a b c  0 c c c 
+
+pos: 257
+add      mult      -         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a a c 
+i i i i  i a b c 
+i i i i  i a a c 
+
+pos: 258
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a c 
+i a a a  i a b c 
+i a a c  i a a c 
+
+pos: 259
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a a c 
+i a b a  i a b c 
+i a a c  i a a c 
+
+pos: 260
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a a c  i a a c 
+i a a c  i a b c 
+i c c c  i a a c 
+
+pos: 261
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a c  i a a c 
+i a b c  i a b c 
+i c c c  i a a c 
+
+pos: 262
+add      mult      -         -         -         -         -         -         +        
+i i i i  i i i i 
+i a b a  i a a c 
+i b a b  i a b c 
+i a b c  i a a c 
+
+pos: 263
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a b a  i a a c 
+i b b b  i a b c 
+i a b c  i a a c 
+
+pos: 264
+add      mult      -         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b b  a b b d 
+b b b b  a b c d 
+d b b d  a b b d 
+
+pos: 265
+add      mult      -         +         -         -         -         -         -        
+a b b d  a a a a 
+b b b b  a b b d 
+b b c b  a b c d 
+d b b d  a b b d 
+
+pos: 266
+add      mult      -         -         -         -         -         -         -        
+a b b d  a a a a 
+b b b d  a b b d 
+b b b d  a b c d 
+d d d d  a b b d 
+
+pos: 267
+add      mult      -         +         -         -         -         -         -        
+a b b d  a a a a 
+b b b d  a b b d 
+b b c d  a b c d 
+d d d d  a b b d 
+
+pos: 268
+add      mult      -         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a c 
+b a a a  0 a b c 
+c a a c  0 a a c 
+
+pos: 269
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a a c 
+b a b a  0 a b c 
+c a a c  0 a a c 
+
+pos: 270
+add      mult      -         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a c  0 a a c 
+b a a c  0 a b c 
+c c c c  0 a a c 
+
+pos: 271
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a c  0 a a c 
+b a b c  0 a b c 
+c c c c  0 a a c 
+
+pos: 272
+add      mult      -         -         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a b a  0 a a c 
+b b a b  0 a b c 
+c a b c  0 a a c 
+
+pos: 273
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a b a  0 a a c 
+b b b b  0 a b c 
+c a b c  0 a a c 
+
+pos: 274
+add      mult      -         -         -         +         -         +         +        
+i i i i  i i i i 
+i i i i  i a a b 
+i i i i  i a 1 b 
+i i i i  i a b b 
+
+pos: 275
+add      mult      -         +         -         -         -         +         +        
+i i i i  i i i i 
+i a a a  i a a b 
+i a 1 1  i a 1 b 
+i a 1 b  i a b b 
+
+pos: 276
+add      mult      -         +         -         -         +         +         -        
+0 a 1 b  0 0 0 0 
+a a a a  0 a a b 
+1 a 1 1  0 a 1 b 
+b a 1 b  0 a b b 
+
+pos: 277
+add      mult      -         -         -         -         -         +         -        
+a a a a  a a a a 
+a b b b  a b b c 
+a b b b  a b 1 c 
+a b b c  c c c c 
+
+pos: 278
+add      mult      -         -         -         -         -         +         -        
+a a a a  a a a a 
+a b b b  a b b c 
+a b b 1  a b 1 c 
+a b 1 c  c c c c 
+
+pos: 279
+add      mult      -         +         -         -         -         +         -        
+a a a a  a a a a 
+a b b b  a b b c 
+a b 1 b  a b 1 c 
+a b b c  c c c c 
+
+pos: 280
+add      mult      -         +         -         -         -         +         -        
+a a a a  a a a a 
+a b b b  a b b c 
+a b 1 1  a b 1 c 
+a b 1 c  c c c c 
+
+pos: 281
+add      mult      -         -         -         -         -         +         -        
+a a a a  a a a a 
+a b 1 b  a b b c 
+a 1 b 1  a b 1 c 
+a b 1 c  c c c c 
+
+pos: 282
+add      mult      -         +         -         -         -         +         -        
+a a a a  a a a a 
+a b 1 b  a b b c 
+a 1 1 1  a b 1 c 
+a b 1 c  c c c c 
+
+pos: 283
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b b b  a b b d 
+a b c c  a c c d 
+a b c d  d d d d 
+
+pos: 284
+add      mult      -         -         -         +         -         -         +        
+i i i i  i i i i 
+i i i i  i a b c 
+i i i i  i a b c 
+i i i i  i a b c 
+
+pos: 285
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a b c 
+i a b a  i a b c 
+i a a c  i a b c 
+
+pos: 286
+add      mult      -         +         -         -         -         -         +        
+i i i i  i i i i 
+i a a a  i a b c 
+i a b b  i a b c 
+i a b c  i a b c 
+
+pos: 287
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a b c 
+b a b a  0 a b c 
+c a a c  0 a b c 
+
+pos: 288
+add      mult      -         +         -         -         +         -         -        
+0 a b c  0 0 0 0 
+a a a a  0 a b c 
+b a b b  0 a b c 
+c a b c  0 a b c 
+
+pos: 289
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b b b  a b c d 
+a b c c  a b c d 
+a b c d  d d d d 
+
+pos: 290
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a a  b b b b 
+a a c a  c c c c 
+a a a d  d d d d 
+
+pos: 291
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a a  b b b b 
+a a c c  c c c c 
+a a c d  d d d d 
+
+pos: 292
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b a b  b b b b 
+a a c c  c c c c 
+a b c d  d d d d 
+
+pos: 293
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b b b  b b b b 
+a b c b  c c c c 
+a b b d  d d d d 
+
+pos: 294
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a a 
+a b b b  b b b b 
+a b c c  c c c c 
+a b c d  d d d d 
+
+pos: 295
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a d 
+a a a a  a b a d 
+a a a a  a a c d 
+a a a d  a a a d 
+
+pos: 296
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a d 
+a a a a  a b a d 
+a a c a  a a c d 
+a a a d  a a a d 
+
+pos: 297
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a d 
+a b a a  a b a d 
+a a c a  a a c d 
+a a a d  a a a d 
+
+pos: 298
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a d 
+a a a d  a b a d 
+a a a d  a a c d 
+d d d d  a a a d 
+
+pos: 299
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a d 
+a a a d  a b a d 
+a a c d  a a c d 
+d d d d  a a a d 
+
+pos: 300
+add      mult      -         +         -         -         -         -         -        
+a a a d  a a a d 
+a b a d  a b a d 
+a a c d  a a c d 
+d d d d  a a a d 
+
+pos: 301
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a d 
+a a c a  a b a d 
+c c a c  a a c d 
+a a c d  a a a d 
+
+pos: 302
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a d 
+a a c a  a b a d 
+c c c c  a a c d 
+a a c d  a a a d 
+
+pos: 303
+add      mult      -         -         -         -         -         -         -        
+a a c a  a a a d 
+a b c a  a b a d 
+c c a c  a a c d 
+a a c d  a a a d 
+
+pos: 304
+add      mult      -         +         -         -         -         -         -        
+a a c a  a a a d 
+a b c a  a b a d 
+c c c c  a a c d 
+a a c d  a a a d 
+
+pos: 305
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a d 
+a a a a  a b a d 
+a a c c  a a c d 
+a a c d  a a d d 
+
+pos: 306
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a d 
+a b a a  a b a d 
+a a c c  a a c d 
+a a c d  a a d d 
+
+pos: 307
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a a d 
+a a c d  a b a d 
+c c c d  a a c d 
+d d d d  a a d d 
+
+pos: 308
+add      mult      -         +         -         -         -         -         -        
+a a c d  a a a d 
+a b c d  a b a d 
+c c c d  a a c d 
+d d d d  a a d d 
+
+pos: 309
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a a d 
+b a b b  a b a d 
+a b c c  a a c d 
+a b c d  a a d d 
+
+pos: 310
+add      mult      -         +         -         -         -         -         -        
+a b a a  a a a d 
+b b b b  a b a d 
+a b c c  a a c d 
+a b c d  a a d d 
+
+pos: 311
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a d 
+a a a a  a b b d 
+a a a a  a b c d 
+a a a d  a a a d 
+
+pos: 312
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a d 
+a b b a  a b b d 
+a b b a  a b c d 
+a a a d  a a a d 
+
+pos: 313
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a d 
+a b b a  a b b d 
+a b c a  a b c d 
+a a a d  a a a d 
+
+pos: 314
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a d 
+a b c a  a b b d 
+a c b a  a b c d 
+a a a d  a a a d 
+
+pos: 315
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a d 
+a b c a  a b b d 
+a c c a  a b c d 
+a a a d  a a a d 
+
+pos: 316
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a d 
+a a a d  a b b d 
+a a a d  a b c d 
+d d d d  a a a d 
+
+pos: 317
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a d 
+a b b d  a b b d 
+a b b d  a b c d 
+d d d d  a a a d 
+
+pos: 318
+add      mult      -         +         -         -         -         -         -        
+a a a d  a a a d 
+a b b d  a b b d 
+a b c d  a b c d 
+d d d d  a a a d 
+
+pos: 319
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a d 
+a b c d  a b b d 
+a c b d  a b c d 
+d d d d  a a a d 
+
+pos: 320
+add      mult      -         +         -         -         -         -         -        
+a a a d  a a a d 
+a b c d  a b b d 
+a c c d  a b c d 
+d d d d  a a a d 
+
+pos: 321
+add      mult      -         -         -         -         -         -         -        
+a b b a  a a a d 
+b a a b  a b b d 
+b a a b  a b c d 
+a b b d  a a a d 
+
+pos: 322
+add      mult      -         -         -         -         -         -         -        
+a b b a  a a a d 
+b b b b  a b b d 
+b b b b  a b c d 
+a b b d  a a a d 
+
+pos: 323
+add      mult      -         +         -         -         -         -         -        
+a b b a  a a a d 
+b b b b  a b b d 
+b b c b  a b c d 
+a b b d  a a a d 
+
+pos: 324
+add      mult      -         -         -         -         -         -         -        
+a b c a  a a a d 
+b b b b  a b b d 
+c b b c  a b c d 
+a b c d  a a a d 
+
+pos: 325
+add      mult      -         +         -         -         -         -         -        
+a b c a  a a a d 
+b b b b  a b b d 
+c b c c  a b c d 
+a b c d  a a a d 
+
+pos: 326
+add      mult      -         -         -         -         -         -         -        
+a b c a  a a a d 
+b b c b  a b b d 
+c c b c  a b c d 
+a b c d  a a a d 
+
+pos: 327
+add      mult      -         +         -         -         -         -         -        
+a b c a  a a a d 
+b b c b  a b b d 
+c c c c  a b c d 
+a b c d  a a a d 
+
+pos: 328
+add      mult      -         +         -         -         -         +         -        
+a b b a  a a a c 
+b b b b  a b b c 
+b b 1 1  a b 1 c 
+a b 1 c  a a c c 
+
+pos: 329
+add      mult      -         -         -         -         -         +         -        
+a a a a  a a a c 
+a b b b  a b b c 
+a b b b  a b 1 c 
+a b b c  a c c c 
+
+pos: 330
+add      mult      -         -         -         -         -         +         -        
+a a a a  a a a c 
+a b b b  a b b c 
+a b b 1  a b 1 c 
+a b 1 c  a c c c 
+
+pos: 331
+add      mult      -         +         -         -         -         +         -        
+a a a a  a a a c 
+a b b b  a b b c 
+a b 1 b  a b 1 c 
+a b b c  a c c c 
+
+pos: 332
+add      mult      -         +         -         -         -         +         -        
+a a a a  a a a c 
+a b b b  a b b c 
+a b 1 1  a b 1 c 
+a b 1 c  a c c c 
+
+pos: 333
+add      mult      -         -         -         -         -         +         -        
+a a a a  a a a c 
+a b 1 b  a b b c 
+a 1 b 1  a b 1 c 
+a b 1 c  a c c c 
+
+pos: 334
+add      mult      -         +         -         -         -         +         -        
+a a a a  a a a c 
+a b 1 b  a b b c 
+a 1 1 1  a b 1 c 
+a b 1 c  a c c c 
+
+pos: 335
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a d 
+a a a a  a b b d 
+a a a a  a c c d 
+a a a d  a a a d 
+
+pos: 336
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a d 
+a b b a  a b b d 
+a b c a  a c c d 
+a a a d  a a a d 
+
+pos: 337
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a d 
+a a a d  a b b d 
+a a a d  a c c d 
+d d d d  a a a d 
+
+pos: 338
+add      mult      -         +         -         -         -         -         -        
+a a a d  a a a d 
+a b b d  a b b d 
+a b c d  a c c d 
+d d d d  a a a d 
+
+pos: 339
+add      mult      -         +         -         -         -         -         -        
+a b c a  a a a d 
+b b b b  a b b d 
+c b c c  a c c d 
+a b c d  a a a d 
+
+pos: 340
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a d 
+a b b b  a b b d 
+a b c c  a c c d 
+a b c d  a d d d 
+
+pos: 341
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a a d 
+a a a a  a b c d 
+a a a a  a b c d 
+a a a d  a a a d 
+
+pos: 342
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a d 
+a b b a  a b c d 
+a b c a  a b c d 
+a a a d  a a a d 
+
+pos: 343
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a a d 
+a a a d  a b c d 
+a a a d  a b c d 
+d d d d  a a a d 
+
+pos: 344
+add      mult      -         +         -         -         -         -         -        
+a a a d  a a a d 
+a b b d  a b c d 
+a b c d  a b c d 
+d d d d  a a a d 
+
+pos: 345
+add      mult      -         +         -         -         -         -         -        
+a b c a  a a a d 
+b b b b  a b c d 
+c b c c  a b c d 
+a b c d  a a a d 
+
+pos: 346
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a a d 
+a b b b  a b c d 
+a b c c  a b c d 
+a b c d  a d d d 
+
+pos: 347
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a c c 
+a a a a  a b c c 
+a a c c  a a c c 
+a a c c  a a c d 
+
+pos: 348
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a c c 
+a a a a  a b c c 
+a a c c  a a c c 
+a a c d  a a c d 
+
+pos: 349
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a c c 
+a b a a  a b c c 
+a a c c  a a c c 
+a a c c  a a c d 
+
+pos: 350
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a c c 
+a b a a  a b c c 
+a a c c  a a c c 
+a a c d  a a c d 
+
+pos: 351
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a c c 
+a a c d  a b c c 
+c c c d  a a c c 
+d d d c  a a c d 
+
+pos: 352
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a c c 
+a a c d  a b c c 
+c c c d  a a c c 
+d d d d  a a c d 
+
+pos: 353
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a c c 
+a b c d  a b c c 
+c c c d  a a c c 
+d d d c  a a c d 
+
+pos: 354
+add      mult      -         +         -         -         -         -         -        
+a a c d  a a c c 
+a b c d  a b c c 
+c c c d  a a c c 
+d d d d  a a c d 
+
+pos: 355
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a c c 
+a a a a  a b c d 
+a a c c  a a c c 
+a a c c  a b c d 
+
+pos: 356
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a c c 
+a b a b  a b c d 
+a a c c  a a c c 
+a b c d  a b c d 
+
+pos: 357
+add      mult      -         -         -         -         -         -         -        
+a b a b  a a c c 
+b a b a  a b c d 
+a b c d  a a c c 
+b a d c  a b c d 
+
+pos: 358
+add      mult      -         +         -         -         -         -         -        
+a b a b  a a c c 
+b b b b  a b c d 
+a b c d  a a c c 
+b b d d  a b c d 
+
+pos: 359
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a c c 
+a b a b  b b d d 
+a a c c  a a c c 
+a b c d  b b d d 
+
+pos: 360
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a c d 
+a a a a  a b c d 
+a a c a  a a c d 
+a a a d  a a c d 
+
+pos: 361
+add      mult      -         -         -         -         -         -         -        
+a a a a  a a c d 
+a a a a  a b c d 
+a a c c  a a c d 
+a a c d  a a c d 
+
+pos: 362
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a c d 
+a b a a  a b c d 
+a a c a  a a c d 
+a a a d  a a c d 
+
+pos: 363
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a c d 
+a b a a  a b c d 
+a a c c  a a c d 
+a a c d  a a c d 
+
+pos: 364
+add      mult      -         -         -         -         -         -         -        
+a a a d  a a c d 
+a a a d  a b c d 
+a a c d  a a c d 
+d d d d  a a c d 
+
+pos: 365
+add      mult      -         +         -         -         -         -         -        
+a a a d  a a c d 
+a b a d  a b c d 
+a a c d  a a c d 
+d d d d  a a c d 
+
+pos: 366
+add      mult      -         -         -         -         -         -         -        
+a a c c  a a c d 
+a a c c  a b c d 
+c c c c  a a c d 
+c c c d  a a c d 
+
+pos: 367
+add      mult      -         +         -         -         -         -         -        
+a a c c  a a c d 
+a b c c  a b c d 
+c c c c  a a c d 
+c c c d  a a c d 
+
+pos: 368
+add      mult      -         -         -         -         -         -         -        
+a a c d  a a c d 
+a a c d  a b c d 
+c c c c  a a c d 
+d d c d  a a c d 
+
+pos: 369
+add      mult      -         +         -         -         -         -         -        
+a a c d  a a c d 
+a b c d  a b c d 
+c c c c  a a c d 
+d d c d  a a c d 
+
+pos: 370
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a c d 
+b a b b  a b c d 
+a b c a  a a c d 
+a b a d  a a c d 
+
+pos: 371
+add      mult      -         -         -         -         -         -         -        
+a b a a  a a c d 
+b a b b  a b c d 
+a b c c  a a c d 
+a b c d  a a c d 
+
+pos: 372
+add      mult      -         +         -         -         -         -         -        
+a b a a  a a c d 
+b b b b  a b c d 
+a b c a  a a c d 
+a b a d  a a c d 
+
+pos: 373
+add      mult      -         +         -         -         -         -         -        
+a b a a  a a c d 
+b b b b  a b c d 
+a b c c  a a c d 
+a b c d  a a c d 
+
+pos: 374
+add      mult      -         +         -         -         -         -         -        
+a a a a  a a c d 
+a b a b  a b c d 
+a a c a  a a c d 
+a b a d  a d c d 
+
+pos: 375
+add      mult      -         +         -         -         -         -         -        
+a a c a  a a c d 
+a b c b  a b c d 
+c c c c  a a c d 
+a b c d  a d c d 
+
+pos: 376
+add      mult      -         +         -         -         -         -         -        
+a b a d  a a c d 
+b b b d  a b c d 
+a b c d  a a c d 
+d d d d  a d c d 
+
+pos: 377
+add      mult      -         +         -         -         -         -         -        
+a a a a  a b c d 
+a b a a  a b c d 
+a a c a  a b c d 
+a a a d  a b c d 
+
+pos: 378
+add      mult      -         +         -         -         -         -         -        
+a a a a  a b c d 
+a b a a  a b c d 
+a a c c  a b c d 
+a a c d  a b c d 
+
+pos: 379
+add      mult      -         +         -         -         -         -         -        
+a a a a  a b c d 
+a b a b  a b c d 
+a a c c  a b c d 
+a b c d  a b c d 
+
+pos: 380
+add      mult      -         +         -         -         -         -         -        
+a a a a  a b c d 
+a b b b  a b c d 
+a b c b  a b c d 
+a b b d  a b c d 
+
+pos: 381
+add      mult      -         +         -         -         -         -         -        
+a a a a  a b c d 
+a b b b  a b c d 
+a b c c  a b c d 
+a b c d  a b c d 
+
+count: 381
+comm_count: 118
+idem_count: 166
+mono_count: 5
+const_count: 15
+zero_count: 46
+one_count: 67
+inf_count: 78
+comm_and_idemp: 33
+inf_and_one: 20
+one_and_zero: 17
+isomorph_dual_count: 1, pos: 359
