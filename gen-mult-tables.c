@@ -111,26 +111,22 @@ int main(void) {
 
     pthread_t threads[THREADS_NUM];
 
-    struct Args* args = (struct Args*)malloc(sizeof(struct Args));
-    args->arr = to_Nth(0);
-    args->count = all / 2;
-    args->text = "part1_count: %llu\n";
-    pthread_create(&threads[0], NULL, generate_idempotent_tables_th, args);
-
-    // pthread_t generate_idempotent_tables_part2_th;
-    struct Args* args2 = (struct Args*)malloc(sizeof(struct Args));
-    args2->arr = to_Nth(all / 2);
-    args2->count = all / 2 + all % 2;
-    args2->text = "part2_count: %llu\n";
-    pthread_create(&threads[1], NULL, generate_idempotent_tables_th, args2);
-
-    // List* mult_tables_part2 = generate_idempotent_tables_th(args2);
+    for (int i = 0; i < THREADS_NUM; i++) {
+        struct Args* args = (struct Args*)malloc(sizeof(struct Args));
+        args->arr = to_Nth(i*(all / THREADS_NUM));
+        args->count = all / THREADS_NUM;
+        if (i == THREADS_NUM - 1) {
+            args->count += all % THREADS_NUM;
+        }
+        args->text = "part1_count: %llu\n";
+        pthread_create(&threads[i], NULL, generate_idempotent_tables_th, args);
+    }
 
     List* mult_tables_arr[THREADS_NUM];
 
-    pthread_join(threads[0], (void*)&mult_tables_arr[0]);
-
-    pthread_join(threads[1], (void*)&mult_tables_arr[1]);
+    for (int i = 0; i < THREADS_NUM; i++) {
+        pthread_join(threads[i], (void*)&mult_tables_arr[i]);
+    }
 
     mult_tables_arr[0]->tail->next = mult_tables_arr[1]->head;
 
