@@ -3,7 +3,6 @@
 #include <errno.h>
 #include <string.h>
 #include <unistd.h>
-#include <pthread.h>
 
 #include "list.h"
 #include "semiring.h"
@@ -162,8 +161,7 @@ void find_isomorph_dual(List semirings, List arrays, int* count, int* pos) {
     }
 }
 
-void* generate_mult_tables_th(void* arg) {
-    List* mult_tables = (List*)arg;
+void generate_mult_tables(List* mult_tables) {
     verbose("Generating mult tables...\n");
     if (MULTCOMM) {
         generate_commutatuive_and_idempotent_tables(mult_tables);
@@ -171,26 +169,6 @@ void* generate_mult_tables_th(void* arg) {
         generate_idempotent_tables(mult_tables);
     }
     verbose("...done generating mult tables\n");
-    return NULL;
-}
-
-struct Args {
-    List* mult_tables;
-    char* mult_filepath;
-};
-
-void* generate_mult_tables_and_cache_th(void* arg) {
-    List* mult_tables = ((struct Args*)arg)->mult_tables;
-    char* mult_filepath = ((struct Args*)arg)->mult_filepath;
-    verbose("Generating mult tables...\n");
-    if (MULTCOMM) {
-        generate_commutatuive_and_idempotent_tables(mult_tables);
-    } else {
-        generate_idempotent_tables(mult_tables);
-    }
-    verbose("...done generating mult tables\n");
-    cache_table_list(mult_filepath, mult_tables, false);
-    return NULL;
 }
 
 int main(int argc, char** argv) {
@@ -210,14 +188,9 @@ int main(int argc, char** argv) {
         char* mult_filepath = malloc(strlen(CACHEDIR) + strlen("mult") + 2);
         sprintf(mult_filepath, "%s/%s", CACHEDIR, "mult");
 
-        pthread_t mult_tables_gen_th;
-        bool mult_tables_gen_th_started = false;
         if(access(mult_filepath, F_OK) != 0) { // not exists
-            struct Args* args = (struct Args*)malloc(sizeof(struct Args));
-            args->mult_tables = &mult_tables;
-            args->mult_filepath = mult_filepath;
-            pthread_create(&mult_tables_gen_th, NULL, generate_mult_tables_and_cache_th, (void*)args);
-            mult_tables_gen_th_started = true;
+            generate_mult_tables(&mult_tables);
+            cache_table_list(mult_filepath, &mult_tables, false);
         } else {
             verbose("Skipped generating mult tables...\n");
             read_table_list_cache(&mult_tables, mult_filepath);
@@ -234,10 +207,6 @@ int main(int argc, char** argv) {
         } else {
             verbose("Skipped generating add tables\n");
             read_table_list_cache(&add_tables, add_filepath);
-        }
-
-        if (mult_tables_gen_th_started) {
-            pthread_join(mult_tables_gen_th, NULL);
         }
 
         char* semir_filepath = malloc(strlen(CACHEDIR) + strlen("semir") + 2);
@@ -266,14 +235,11 @@ int main(int argc, char** argv) {
             read_semiring_list_cache(&semirings, semirnoiz_filepath);
         }
     } else {
-        pthread_t mult_tables_gen_th;
-        pthread_create(&mult_tables_gen_th, NULL, generate_mult_tables_th, (void*)&mult_tables);
-
         verbose("Generating add tables...\n");
         generate_commutative_tables(&add_tables);
         verbose("...done generating add tables\n");
 
-        pthread_join(mult_tables_gen_th, NULL);
+        generate_mult_tables(&mult_tables);
 
         verbose("Generating semirings...\n");
         generate_semirings(&semirings, mult_tables, add_tables);
